@@ -1,6 +1,18 @@
 import "./App.css";
+import axios from "axios";
+import React, { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    const testGet = async () => {
+      const response = (
+        await axios.get(`${process.env.REACT_APP_API_ADDRESS}/test-get`)
+      ).data;
+      console.log(response);
+    };
+    testGet();
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
