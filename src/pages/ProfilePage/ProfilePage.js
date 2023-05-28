@@ -17,7 +17,6 @@ function ProfilePage() {
         )
       ).data;
       setRecipes(response);
-      console.log(response);
     };
     const getRecipeBoxes = async () => {
       const response = (
@@ -25,7 +24,6 @@ function ProfilePage() {
           `${process.env.REACT_APP_API_ADDRESS}/${user.sub}/recipe-box`
         )
       ).data;
-      console.log(response);
       setRecipeBoxes(response);
     };
     getRecipes();

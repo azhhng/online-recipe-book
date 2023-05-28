@@ -16,7 +16,6 @@ function RecipeBox(props) {
         )
       ).data;
       setRecipes(response);
-      console.log(response);
     };
     getRecipes();
   }, []);
