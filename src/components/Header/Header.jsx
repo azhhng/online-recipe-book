@@ -11,6 +11,7 @@ function Header() {
 
   return (
     <div className="header">
+      <Link to={"/"}>Home</Link>
       {!user && <LoginButton />}
       {user && <Link to={"/profile/" + user.sub.split("|")[1]}>Profile</Link>}
       {user && <LogoutButton />}
