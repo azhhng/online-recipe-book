@@ -1,0 +1,35 @@
+@import "../../assets/sass/colors.scss";
+
+/* ===== Sidebar CSS ===== */
+
+.sidebar-container {
+  width: 500px;
+  position: fixed;
+  left: 5%;
+  top: 30%;
+}
+
+.sidebar-container > h1:hover {
+  cursor: pointer;
+}
+
+.sidebar-container > h1 {
+  font-size: 70px;
+  color: $vibrant-blue;
+  text-decoration: underline;
+}
+
+.sidebar-container > h1 > span {
+  color: $dark-blue;
+  background-color: $deepest-yellow;
+  padding: 0px 15px 15px;
+  margin-right: 8px;
+  border-radius: 15px;
+}
+
+.sidebar-container > h2 {
+  color: $vibrant-blue;
+  padding: 0px;
+  margin: 10px 0px;
+  margin-right: 8px;
+}

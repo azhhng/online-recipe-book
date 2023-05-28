@@ -1,0 +1,14 @@
+@import "../../assets/sass/colors.scss";
+
+/* ===== Header CSS ===== */
+
+.header {
+  transition: 0.3s;
+  min-height: 80px;
+  margin: 40px auto 30px auto;
+  border-radius: 15px;
+  width: 80%;
+  display: flex;
+  justify-content: right;
+  background: #4340a85b;
+}
