@@ -8,7 +8,8 @@ import CreateRecipeBoxForm from "../../components/CreateRecipeBoxForm/CreateReci
 function ProfilePage() {
   const { user } = useAuth0();
   const [recipeBoxes, setRecipeBoxes] = useState([]);
-  const [recipes, setRecipes] = useState([]);
+  // const [recipes, setRecipes] = useState([]);
+  const [recipesPerBox, setRecipesPerBox] = useState({});
 
   useEffect(() => {
     const getRecipes = async () => {
@@ -17,7 +18,23 @@ function ProfilePage() {
           `${process.env.REACT_APP_API_ADDRESS}/${user.sub}/recipe`
         )
       ).data;
-      setRecipes(response);
+
+      const recipesPerBoxObject = {};
+      for (const recipe in response) {
+        if (
+          recipesPerBoxObject.hasOwnProperty(response[recipe].recipe_box_id)
+        ) {
+          recipesPerBoxObject[response[recipe].recipe_box_id].push(
+            response[recipe]
+          );
+        } else {
+          recipesPerBoxObject[response[recipe].recipe_box_id] = [
+            response[recipe],
+          ];
+        }
+      }
+      setRecipesPerBox(recipesPerBoxObject);
+      // setRecipes(response);
     };
     const getRecipeBoxes = async () => {
       const response = (
@@ -34,7 +51,11 @@ function ProfilePage() {
   return (
     <div className="profile-page-container">
       {recipeBoxes.map((recipeBox) => (
-        <RecipeBox key={recipeBox.recipe_box_id} box={recipeBox} />
+        <RecipeBox
+          key={recipeBox.recipe_box_id}
+          box={recipeBox}
+          recipes={recipesPerBox[recipeBox.recipe_box_id] ?? []}
+        />
       ))}
       <CreateRecipeBoxForm />
     </div>
