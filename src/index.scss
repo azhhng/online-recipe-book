@@ -1,0 +1,42 @@
+@import "../src/assets/sass/colors.scss";
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: $light-blue;
+}
+
+h1 {
+  font-size: 70px;
+  color: $grey;
+}
+
+a {
+  font-size: 20px;
+  font-weight: bold;
+  color: $vibrant-blue;
+  letter-spacing: 1px;
+  text-decoration: none;
+  background-color: #ffffff00;
+  margin: 27px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+button {
+  font-family: "Segoe UI";
+  font-size: 20px;
+  font-weight: bold;
+  color: $vibrant-blue;
+  letter-spacing: 1px;
+  background-color: #ffffff00;
+  margin: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
