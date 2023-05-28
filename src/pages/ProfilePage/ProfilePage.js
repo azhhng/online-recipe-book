@@ -29,7 +29,7 @@ function ProfilePage() {
     };
     getRecipes();
     getRecipeBoxes();
-  }, []);
+  }, [user]);
 
   return (
     <div className="profile-page-container">
