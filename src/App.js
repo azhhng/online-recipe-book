@@ -13,10 +13,6 @@ function App() {
         <Routes>
           <Route path="/" element={<WelcomePage />} />
           <Route path="/profile/:user" element={<ProfilePage />} />
-
-          {/* <Route exact path="*">
-            <NotFound />
-          </Route> */}
         </Routes>
       </div>
     </Router>
