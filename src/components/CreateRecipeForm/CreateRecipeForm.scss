@@ -1,0 +1,26 @@
+.recipe-form > input[type="text"],
+select {
+  font-size: 17px;
+  width: 90%;
+  height: 35px;
+  padding: 8px 10px;
+  margin: 5px;
+  border: 2px solid #aa3479fa;
+  box-sizing: border-box;
+  outline: none;
+  color: #000000;
+}
+
+.recipe-form > input[type="checkbox"],
+select {
+  width: 15%;
+  color: #000000;
+}
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  font-family: "Source Code Pro", monospace;
+  color: #000000;
+  opacity: 1;
+  /* Firefox */
+}

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
+import "./CreateRecipeForm.scss";
 
 function CreateRecipeForm(props) {
   const recipeBoxId = props.recipeBox.recipe_box_id;
@@ -60,20 +61,18 @@ function CreateRecipeForm(props) {
             type="checkbox"
             id="recipe-has-made"
             name="has-made/"
-            value={hasMade}
-            onChange={(event) => setHasMade(event.target.value)}
+            checked={hasMade}
+            onChange={(event) => setHasMade(!hasMade)}
           ></input>
-          <label for="recipe-has-made">I have made this recipe!</label>
+          <label htmlFor="recipe-has-made">Has Made</label>
           <input
             type="checkbox"
             id="recipe-favorite"
             name="favorite/"
-            value={favorite}
-            onChange={(event) => setFavorite(event.target.value)}
+            checked={favorite}
+            onChange={(event) => setFavorite(!favorite)}
           ></input>
-          <label for="recipe-favorite">
-            This is one of my favorite recipes!
-          </label>
+          <label htmlFor="recipe-favorite">Favorite</label>
         </form>
       </div>
       <button onClick={() => createRecipe()}>
