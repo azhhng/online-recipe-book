@@ -1,0 +1,18 @@
+@import "../../assets/sass/colors.scss";
+
+/* ===== Card CSS ===== */
+
+.recipe-box {
+  float: left;
+  padding: 5px 40px;
+  height: 250px;
+  width: 295px;
+  margin-top: 20px;
+  margin-right: 20px;
+  border: 2px solid $vibrant-blue;
+}
+
+.recipe-box > .recipe-box-name {
+  color: $vibrant-blue;
+  text-align: center;
+}
