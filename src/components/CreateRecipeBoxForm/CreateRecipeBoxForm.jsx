@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
+import "./CreateRecipeBoxForm.scss";
 
 function CreateRecipeBoxForm() {
   const { user } = useAuth0();
