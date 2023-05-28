@@ -1,6 +1,10 @@
 import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import axios from "axios";
 import React, { useEffect } from "react";
+import WelcomePage from "./pages/WelcomePage";
+import Header from "./components/Header/Header";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 function App() {
   useEffect(() => {
@@ -14,21 +18,19 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header />
+      <div>
+        <Routes>
+          <Route path="/" element={<WelcomePage />} />
+          <Route path="/profile/:user" element={<ProfilePage />} />
+
+          {/* <Route exact path="*">
+            <NotFound />
+          </Route> */}
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
