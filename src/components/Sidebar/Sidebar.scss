@@ -3,28 +3,35 @@
 /* ===== Sidebar CSS ===== */
 
 .sidebar-container {
-  width: 500px;
+  width: 700px;
   position: fixed;
   left: 5%;
   top: 30%;
 }
 
-.sidebar-container > h1:hover {
+.sidebar-container > .title-container > h1:hover {
   cursor: pointer;
 }
 
-.sidebar-container > h1 {
+.sidebar-container > .title-container > h1 {
   font-size: 70px;
   color: $vibrant-blue;
   text-decoration: underline;
 }
 
-.sidebar-container > h1 > span {
+.sidebar-container > .title-container > h1 > span {
   color: $dark-blue;
   background-color: $deepest-yellow;
   padding: 0px 15px 15px;
   margin-right: 8px;
   border-radius: 15px;
+}
+
+.sidebar-container > .title-container > img {
+  max-width: 160px;
+  max-height: 160px;
+  float: left;
+  margin-right: 10px;
 }
 
 .sidebar-container > h2 {

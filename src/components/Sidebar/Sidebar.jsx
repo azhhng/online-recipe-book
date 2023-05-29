@@ -1,12 +1,17 @@
 import React from "react";
 import "./Sidebar.scss";
+import bentoBoxIcon from "../../assets/images/food/bento_box_3d.png";
 
 function Sidebar() {
   return (
     <div className="sidebar-container">
-      <h1>
-        <span>Recipe</span>boxd
-      </h1>
+      <div className="title-container">
+        <img id="bento-icon" src={bentoBoxIcon} alt="ponyo" />
+        <h1>
+          <span>Recipe</span>boxd
+        </h1>
+      </div>
+
       <h2>Your collection of online recipes...</h2>
       <h2>The modern recipe box!</h2>
       {/* <h2>
