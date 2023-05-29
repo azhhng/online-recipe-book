@@ -1,12 +1,8 @@
 import "./RecipeBox.scss";
-import React, { useEffect } from "react";
+import React from "react";
 import CreateRecipeForm from "../CreateRecipeForm/CreateRecipeForm";
 
 function RecipeBox(props) {
-  useEffect(() => {
-    console.log(props);
-  }, [props]);
-
   return (
     <div className="recipe-box">
       <h3 className="recipe-box-name">{props.box.name}</h3>
