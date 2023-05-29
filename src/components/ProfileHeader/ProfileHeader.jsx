@@ -9,7 +9,9 @@ function ProfileHeader() {
   return (
     <div className="profile-header">
       <Link to={"/"}>Recipe Boxes</Link>
-      <Link to={"/"}>Recipes</Link>
+      <Link to={"/profile/" + user.sub.split("|")[1] + "/recipes"}>
+        Recipes
+      </Link>
     </div>
   );
 }
