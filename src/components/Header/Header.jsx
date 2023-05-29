@@ -12,12 +12,9 @@ function Header() {
   return (
     <div className="header">
       <img id="bento-icon" src={bentoBoxIcon} alt="ponyo" />
-      <Link to={"/"} className="title-link">
-        <span>Recipe</span>boxd
-      </Link>
-      <Link to={"/"}>Home</Link>
+      <Link to={"/"}>HOME</Link>
       {!user && <LoginButton />}
-      {user && <Link to={"/profile/" + user.sub.split("|")[1]}>Profile</Link>}
+      {user && <Link to={"/profile/" + user.sub.split("|")[1]}>PROFILE</Link>}
       {user && <LogoutButton />}
     </div>
   );
