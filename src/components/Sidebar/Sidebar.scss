@@ -4,7 +4,7 @@
 
 .sidebar-container {
   width: 700px;
-  position: fixed;
+  float: left;
   left: 5%;
   top: 30%;
 }
@@ -28,8 +28,6 @@
 }
 
 .sidebar-container > .title-container > img {
-  max-width: 160px;
-  max-height: 160px;
   float: left;
   margin-right: 10px;
 }

@@ -1,12 +1,13 @@
 import React from "react";
 import "./Sidebar.scss";
-import bentoBoxIcon from "../../assets/images/food/bento_box_3d.png";
+import Emoji from "../Emoji/Emoji";
+import { Emojis } from "../../enums/Emojis";
 
 function Sidebar() {
   return (
     <div className="sidebar-container">
       <div className="title-container">
-        <img id="bento-icon" src={bentoBoxIcon} alt="ponyo" />
+        <Emoji name={Emojis.BENTO} width={140} height={100} />
         <h1>
           <span>Recipe</span>boxd
         </h1>
