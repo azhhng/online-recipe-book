@@ -1,11 +1,22 @@
+@import "../../assets/sass/colors.scss";
+
+.recipe-box-form-container {
+  float: left;
+  padding: 5px 40px;
+  min-height: 250px;
+  width: 250px;
+  margin-top: 20px;
+  margin-right: 20px;
+  border: 2px solid $vibrant-blue;
+}
 .recipe-box-form > input[type="text"],
 select {
   font-size: 17px;
-  width: 50%;
+  width: 90%;
   height: 35px;
   padding: 8px 10px;
   margin: 5px;
-  border: 2px solid #aa3479fa;
+  border: 2px solid $deepest-yellow;
   box-sizing: border-box;
   outline: none;
   color: #000000;
