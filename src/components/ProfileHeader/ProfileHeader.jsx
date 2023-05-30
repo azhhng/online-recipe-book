@@ -5,6 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 function ProfileHeader() {
   const { user } = useAuth0();
+  // TODO fix bug where refreshing page gives undefined sub error
 
   return (
     <div className="profile-header">
