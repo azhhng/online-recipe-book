@@ -2,13 +2,6 @@
 
 /* ===== Sidebar CSS ===== */
 
-.sidebar-container {
-  width: 700px;
-  float: left;
-  left: 5%;
-  top: 30%;
-}
-
 .sidebar-container > .title-container > h1:hover {
   cursor: pointer;
 }
@@ -17,6 +10,8 @@
   font-size: 70px;
   color: $vibrant-blue;
   text-decoration: underline;
+  margin: 0px;
+  padding: 0px 0px 30px 0px;
 }
 
 .sidebar-container > .title-container > h1 > span {
@@ -36,5 +31,4 @@
   color: $vibrant-blue;
   padding: 0px;
   margin: 10px 0px;
-  margin-right: 8px;
 }
