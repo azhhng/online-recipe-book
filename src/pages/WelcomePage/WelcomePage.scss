@@ -8,17 +8,46 @@
 }
 
 .guide-container {
-  float: left;
-  margin-top: 5%;
-  width: 700px;
-  height: 500px;
+  float: right;
+  margin-top: 10%;
+  width: 40%;
+  height: 300px;
   background-color: white;
   border: 2px solid $dark-blue;
   box-shadow: 0px 5px $dark-blue;
   border-radius: 15px;
-  padding: 10px 30px;
+  padding: 20px 30px;
+}
+
+.welcome-container > .guide-container > h1 {
+  font-size: 25px;
+  color: $dark-blue;
+}
+
+.welcome-container > .guide-container > ul {
+  padding: 0;
+}
+
+.welcome-container > .guide-container > ul > li {
+  list-style-type: none;
+  font-family: "Trebuchet MS";
+  color: $dark-blue;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.welcome-container > .guide-container > ul > li > img {
+  margin: auto 15px;
 }
 
 .sidebar-container {
   margin-top: 10%;
+  min-width: 600px;
+  float: left;
+  left: 5%;
 }
