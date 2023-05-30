@@ -1,13 +1,13 @@
 import React from "react";
 import "./Sidebar.scss";
 import Emoji from "../Emoji/Emoji";
-import { Emojis } from "../../enums/Emojis";
+import { FoodEmoji } from "../../enums/Emojis";
 
 function Sidebar() {
   return (
     <div className="sidebar-container">
       <div className="title-container">
-        <Emoji name={Emojis.BENTO} width={140} height={100} />
+        <Emoji name={FoodEmoji.BENTO} width={140} height={100} />
         <h1>
           <span>Recipe</span>boxd
         </h1>
