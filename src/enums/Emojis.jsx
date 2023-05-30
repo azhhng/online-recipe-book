@@ -1,5 +1,5 @@
-// Enum for trip request payment methods
-export const Emojis = Object.freeze({
+// FoodEmoji enums
+export const FoodEmoji = Object.freeze({
   BANANA: "banana",
   BEER: "beer_mug",
   BENTO: "bento_box",
@@ -8,11 +8,13 @@ export const Emojis = Object.freeze({
   BUBBLE_TEA: "bubble_tea",
   CHEESE_WEDGE: "cheese_wedge",
   CHERRIES: "cherries",
-  CROISSANT: "croissant",
+  COOKING: "cooking",
   CORN: "ear_of_corn",
+  CROISSANT: "croissant",
   DANGO: "dango",
   DUMPLING: "dumpling",
   FISH_CAKE: "fish_cake_with_swirl",
+  FORK_KNIFE_PLATE: "fork_and_knife_with_plate",
   GRAPES: "grapes",
   HOT_DOG: "hot_dog",
   LEAFY_GREEN: "leafy_green",
@@ -26,4 +28,9 @@ export const Emojis = Object.freeze({
   SUSHI: "sushi",
   WAFFLE: "waffle",
   WATERMELON: "watermelon",
+});
+
+// SymbolEmoji enums
+export const SymbolEmoji = Object.freeze({
+  SPARKLING_HEART: "sparkling_heart",
 });
