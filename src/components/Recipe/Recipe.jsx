@@ -7,7 +7,9 @@ function Recipe(props) {
   return (
     <div className="recipe-container">
       <h3 className="recipe-name-container">{props.name}</h3>
-      <h3>{props.link}</h3>
+      <a href={props.link} target="_blank" rel="noopener noreferrer">
+        Link
+      </a>
       <h3>{props.description}</h3>
       {props.favorite && (
         <Emoji name={SymbolEmoji.SPARKLING_HEART} width={50} height={35} />
