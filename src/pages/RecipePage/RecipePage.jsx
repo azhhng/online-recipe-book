@@ -4,6 +4,7 @@ import "./RecipePage.scss";
 import ProfileHeader from "../../components/ProfileHeader/ProfileHeader";
 import Recipe from "../../components/Recipe/Recipe";
 import { useAuth0 } from "@auth0/auth0-react";
+import CreateRecipeForm from "../../components/CreateRecipeForm/CreateRecipeForm";
 
 function RecipePage() {
   const { user } = useAuth0();
@@ -35,6 +36,7 @@ function RecipePage() {
           favorite={recipe.favorite}
         />
       ))}
+      <CreateRecipeForm sourcePage={"RecipePage"} />
     </div>
   );
 }
