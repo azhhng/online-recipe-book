@@ -9,14 +9,13 @@ import ProfileHeader from "../../components/ProfileHeader/ProfileHeader";
 function ProfilePage() {
   const { user } = useAuth0();
   const [recipeBoxes, setRecipeBoxes] = useState([]);
-  // const [recipes, setRecipes] = useState([]);
   const [recipesPerBox, setRecipesPerBox] = useState({});
 
   useEffect(() => {
     const getRecipes = async () => {
       const response = (
         await axios.get(
-          `${process.env.REACT_APP_API_ADDRESS}/${user.sub}/recipe`
+          `${process.env.REACT_APP_API_ADDRESS}/${user?.sub}/recipe`
         )
       ).data;
 
@@ -35,12 +34,11 @@ function ProfilePage() {
         }
       }
       setRecipesPerBox(recipesPerBoxObject);
-      // setRecipes(response);
     };
     const getRecipeBoxes = async () => {
       const response = (
         await axios.get(
-          `${process.env.REACT_APP_API_ADDRESS}/${user.sub}/recipe-box`
+          `${process.env.REACT_APP_API_ADDRESS}/${user?.sub}/recipe-box`
         )
       ).data;
       setRecipeBoxes(response);
