@@ -41,7 +41,9 @@ function CreateRecipeForm(props) {
 
       const options = response.map((recipeBox) => {
         return (
-          <option value={recipeBox.recipe_box_id}>{recipeBox.name}</option>
+          <option key={recipeBox.recipe_box_id} value={recipeBox.recipe_box_id}>
+            {recipeBox.name}
+          </option>
         );
       });
       setBoxOptions(options);
