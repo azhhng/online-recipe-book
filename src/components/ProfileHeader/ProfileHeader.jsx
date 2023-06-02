@@ -8,7 +8,7 @@ function ProfileHeader() {
 
   return (
     <div className="profile-header">
-      <Link to={"/"}>Recipe Boxes</Link>
+      <Link to={"/profile/" + userSub}>Recipe Boxes</Link>
       <Link to={"/profile/" + userSub + "/recipes"}>Recipes</Link>
     </div>
   );
