@@ -24,6 +24,9 @@ import sushi from "../../assets/images/food/sushi_flat.svg";
 import waffle from "../../assets/images/food/waffle_flat.svg";
 import watermelon from "../../assets/images/food/watermelon_flat.svg";
 // symbol emojis
+import fire from "../../assets/images/symbols/fire.svg";
+import page from "../../assets/images/symbols/page.svg";
+import pencil from "../../assets/images/symbols/pencil.svg";
 import sparklingHeart from "../../assets/images/symbols/sparkling_heart_flat.svg";
 
 function Emoji(props) {
@@ -80,9 +83,6 @@ function Emoji(props) {
     case FoodEmoji.SANDWICH:
       emoji = sandwich;
       break;
-    case SymbolEmoji.SPARKLING_HEART:
-      emoji = sparklingHeart;
-      break;
     case FoodEmoji.SUSHI:
       emoji = sushi;
       break;
@@ -91,6 +91,19 @@ function Emoji(props) {
       break;
     case FoodEmoji.WATERMELON:
       emoji = watermelon;
+      break;
+    // symbols
+    case SymbolEmoji.FIRE:
+      emoji = fire;
+      break;
+    case SymbolEmoji.PAGE:
+      emoji = page;
+      break;
+    case SymbolEmoji.PENCIL:
+      emoji = pencil;
+      break;
+    case SymbolEmoji.SPARKLING_HEART:
+      emoji = sparklingHeart;
       break;
     default:
       emoji = oopsFace;

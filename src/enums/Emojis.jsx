@@ -32,5 +32,8 @@ export const FoodEmoji = Object.freeze({
 
 // SymbolEmoji enums
 export const SymbolEmoji = Object.freeze({
+  FIRE: "fire",
+  PAGE: "page",
+  PENCIL: "pencil",
   SPARKLING_HEART: "sparkling_heart",
 });
