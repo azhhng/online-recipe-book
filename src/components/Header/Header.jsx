@@ -12,7 +12,7 @@ function Header() {
 
   return (
     <div className="header">
-      <Emoji name={FoodEmoji.BENTO} width={50} height={35} />
+      <Emoji type={"food"} name={FoodEmoji.BENTO} width={50} height={35} />
       <Link to={"/"}>Home</Link>
       {!user && <LoginButton />}
       {user && <Link to={"/profile/" + user.sub.split("|")[1]}>Profile</Link>}

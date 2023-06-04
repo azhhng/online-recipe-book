@@ -23,13 +23,28 @@ function RecipeBox(props) {
   return (
     <div className="recipe-box">
       <button onClick={() => setAddingRecipeToBox(true)}>
-        <Emoji name={SymbolEmoji.PAGE} width={30} height={30} />
+        <Emoji
+          type={"symbols"}
+          name={SymbolEmoji.PAGE}
+          width={30}
+          height={30}
+        />
       </button>
       <button onClick={() => setEditingRecipeBox(true)}>
-        <Emoji name={SymbolEmoji.PENCIL} width={30} height={30} />
+        <Emoji
+          type={"symbols"}
+          name={SymbolEmoji.PENCIL}
+          width={30}
+          height={30}
+        />
       </button>
       <button onClick={() => deleteRecipeBox()}>
-        <Emoji name={SymbolEmoji.FIRE} width={30} height={30} />
+        <Emoji
+          type={"symbols"}
+          name={SymbolEmoji.FIRE}
+          width={30}
+          height={30}
+        />
       </button>
       <h3 className="recipe-box-name">{props.box.name}</h3>
       <h3>{props.box.description}</h3>

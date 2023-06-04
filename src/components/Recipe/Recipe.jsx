@@ -12,10 +12,20 @@ function Recipe(props) {
       </a>
       <h3>{props.description}</h3>
       {props.favorite && (
-        <Emoji name={SymbolEmoji.SPARKLING_HEART} width={50} height={35} />
+        <Emoji
+          type={"symbols"}
+          name={SymbolEmoji.SPARKLING_HEART}
+          width={50}
+          height={35}
+        />
       )}
       {props.hasMade && (
-        <Emoji name={FoodEmoji.FORK_KNIFE_PLATE} width={50} height={35} />
+        <Emoji
+          type={"food"}
+          name={FoodEmoji.FORK_KNIFE_PLATE}
+          width={50}
+          height={35}
+        />
       )}
     </div>
   );

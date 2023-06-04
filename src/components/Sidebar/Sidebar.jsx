@@ -7,7 +7,7 @@ function Sidebar() {
   return (
     <div className="sidebar-container">
       <div className="title-container">
-        <Emoji name={FoodEmoji.BENTO} width={100} height={100} />
+        <Emoji type={"food"} name={FoodEmoji.BENTO} width={100} height={100} />
         <h1>
           <span>Recipe</span>boxd
         </h1>

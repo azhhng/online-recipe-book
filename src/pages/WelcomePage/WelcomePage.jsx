@@ -14,15 +14,30 @@ function WelcomePage() {
         <h1>Get started in 3 simple steps:</h1>
         <ul>
           <li>
-            <Emoji name={FoodEmoji.WATERMELON} width={35} height={35} />
+            <Emoji
+              type={"food"}
+              name={FoodEmoji.WATERMELON}
+              width={35}
+              height={35}
+            />
             Sign up with your Google or Github account
           </li>
           <li>
-            <Emoji name={FoodEmoji.WATERMELON} width={35} height={35} />
+            <Emoji
+              type={"food"}
+              name={FoodEmoji.WATERMELON}
+              width={35}
+              height={35}
+            />
             Create your first recipe box
           </li>
           <li>
-            <Emoji name={FoodEmoji.WATERMELON} width={35} height={35} />
+            <Emoji
+              type={"food"}
+              name={FoodEmoji.WATERMELON}
+              width={35}
+              height={35}
+            />
             Start adding your recipe links
           </li>
         </ul>
