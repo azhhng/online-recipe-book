@@ -4,6 +4,7 @@ export const FoodEmoji = Object.freeze({
   BEER: "beer_mug",
   BENTO: "bento_box",
   BIRTHDAY_CAKE: "birthday_cake",
+  BLUEBERRIES: "blueberries",
   BREAD: "bread",
   BUBBLE_TEA: "bubble_tea",
   CHEESE_WEDGE: "cheese_wedge",
@@ -21,10 +22,12 @@ export const FoodEmoji = Object.freeze({
   LOBSTER: "lobster",
   MOON_CAKE: "moon_cake",
   ODEN: "oden",
+  ROASTED_SWEET_POTATO: "roasted_sweet_potato",
   SANDWICH: "sandwich",
   SHRIMP: "shrimp",
   SOFT_ICE_CREAM: "soft_ice_cream",
   SPAGHETTI: "spaghetti",
+  STRAWBERRY: "strawberry",
   SUSHI: "sushi",
   WAFFLE: "waffle",
   WATERMELON: "watermelon",
@@ -32,6 +35,7 @@ export const FoodEmoji = Object.freeze({
 
 // SymbolEmoji enums
 export const SymbolEmoji = Object.freeze({
+  BOX: "card_file_box",
   FIRE: "fire",
   PAGE: "page",
   PENCIL: "pencil",
