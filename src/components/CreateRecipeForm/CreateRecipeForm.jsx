@@ -106,8 +106,11 @@ function CreateRecipeForm(props) {
           <label htmlFor="recipe-favorite">Favorite</label>
         </form>
       </div>
+      <button onClick={() => props.setAddingRecipeToBox(false)}>
+        <span>Cancel</span>
+      </button>
       <button onClick={() => createRecipe()}>
-        <span>Add Recipe</span>
+        <span>Add</span>
       </button>
     </div>
   );
