@@ -11,13 +11,35 @@
   max-width: 250px;
   margin-top: 20px;
   margin-right: 20px;
-  border: 2px solid $blue;
-  background-color: #fff;
-  box-shadow: 0px 0px $blue;
-  border-radius: 15px;
+  border-radius: 10px;
+  border: 2px solid $dark-blue;
+  box-shadow: 2px 2px 0px 2px $deepest-yellow;
 }
 
 .recipe-box > .recipe-box-name {
   color: $vibrant-blue;
   text-align: center;
+  min-width: 250px;
+  padding: 60px 0px 0px 0px;
+}
+
+.recipe-box > img {
+  padding: 6px 15px;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  float: left;
+}
+
+.actions-box {
+  padding: 3px 8px;
+  border-radius: 10px;
+  margin-top: 10px;
+  float: right;
+  background-color: $light-blue;
+  border: 2px solid $dark-blue;
+}
+
+.recipe-box > .actions-box > button {
+  margin: 0px 4px;
 }
