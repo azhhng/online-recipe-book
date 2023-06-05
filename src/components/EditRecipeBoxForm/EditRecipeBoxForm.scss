@@ -22,6 +22,19 @@ select {
   color: #000000;
 }
 
+#recipe-box-description {
+  font-size: 17px;
+  width: 90%;
+  height: 200px;
+  padding: 8px 10px;
+  margin: 5px;
+  border: 2px solid $deepest-yellow;
+  box-sizing: border-box;
+  outline: none;
+  color: #000000;
+  resize: none;
+}
+
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   font-family: "Source Code Pro", monospace;
