@@ -12,7 +12,6 @@ function Header(props) {
   const isOnProfile =
     location.pathname.split("/")[1] === "profile" ? true : false;
   const { user } = useAuth0();
-  console.log(isOnProfile);
 
   return (
     <div className="header">
