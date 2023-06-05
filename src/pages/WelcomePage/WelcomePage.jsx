@@ -16,7 +16,7 @@ function WelcomePage() {
           <li>
             <Emoji
               type={"food"}
-              name={FoodEmoji.WATERMELON}
+              name={FoodEmoji.PANCAKES}
               width={35}
               height={35}
             />
@@ -25,7 +25,7 @@ function WelcomePage() {
           <li>
             <Emoji
               type={"food"}
-              name={FoodEmoji.WATERMELON}
+              name={FoodEmoji.PANCAKES}
               width={35}
               height={35}
             />
@@ -34,7 +34,7 @@ function WelcomePage() {
           <li>
             <Emoji
               type={"food"}
-              name={FoodEmoji.WATERMELON}
+              name={FoodEmoji.PANCAKES}
               width={35}
               height={35}
             />
