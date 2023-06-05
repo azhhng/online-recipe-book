@@ -55,6 +55,7 @@ export const FoodEmoji = Object.freeze({
   PIE: "pie",
   PIZZA: "pizza",
   POPCORN: "popcorn",
+  PRETZEL: "pretzel",
   ROASTED_SWEET_POTATO: "roasted_sweet_potato",
   SANDWICH: "sandwich",
   SHORTCAKE: "shortcake",
@@ -78,7 +79,9 @@ export const FoodEmoji = Object.freeze({
 export const SymbolEmoji = Object.freeze({
   BOX: "card_file_box",
   FIRE: "fire",
+  LINK: "link",
   PAGE: "page",
   PENCIL: "pencil",
+  PLUS: "plus",
   SPARKLING_HEART: "sparkling_heart",
 });
