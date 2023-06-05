@@ -6,6 +6,7 @@ function Emoji(props) {
       alt="ponyo"
       width={props.width}
       height={props.height}
+      style={props.style ?? {}}
     />
   );
 }
