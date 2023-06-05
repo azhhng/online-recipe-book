@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./RecipePage.scss";
-import ProfileHeader from "../../components/ProfileHeader/ProfileHeader";
 import Recipe from "../../components/Recipe/Recipe";
 import { useAuth0 } from "@auth0/auth0-react";
 import CreateRecipeForm from "../../components/CreateRecipeForm/CreateRecipeForm";
@@ -24,7 +23,6 @@ function RecipePage() {
 
   return (
     <div className="recipe-page-container">
-      <ProfileHeader />
       {recipes.map((recipe) => (
         <Recipe
           key={recipe.recipe_id}
