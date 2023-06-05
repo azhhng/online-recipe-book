@@ -7,6 +7,7 @@ function CreateRecipeBoxForm() {
   const { user } = useAuth0();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [color, setColor] = useState("");
 
   const createRecipeBox = async () => {
     const response = await axios.post(
@@ -14,6 +15,7 @@ function CreateRecipeBoxForm() {
       {
         name,
         description,
+        color,
       }
     );
     console.log("Creating a recipe box...");
@@ -27,23 +29,27 @@ function CreateRecipeBoxForm() {
           <input
             type="text"
             id="recipe-box-name"
-            name="name/"
             value={name}
             placeholder="Name..."
             onChange={(event) => setName(event.target.value)}
           ></input>
-          <input
+          <textarea
             type="text"
             id="recipe-box-description"
-            name="description/"
             value={description}
             placeholder="Description..."
+            rows="4"
             onChange={(event) => setDescription(event.target.value)}
+          ></textarea>
+          <input
+            type="color"
+            id="favcolor"
+            onChange={(event) => setColor(event.target.value)}
           ></input>
         </form>
       </div>
       <button onClick={() => createRecipeBox()}>
-        <span>Create Recipe Box</span>
+        <span>Create</span>
       </button>
     </div>
   );
