@@ -7,7 +7,7 @@ function CreateRecipeBoxForm() {
   const { user } = useAuth0();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [color, setColor] = useState("");
+  const [color, setColor] = useState("#8fafe3");
 
   const createRecipeBox = async () => {
     const response = await axios.post(
@@ -44,6 +44,7 @@ function CreateRecipeBoxForm() {
           <input
             type="color"
             id="favcolor"
+            value={color}
             onChange={(event) => setColor(event.target.value)}
           ></input>
         </form>
