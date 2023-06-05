@@ -58,7 +58,6 @@ function CreateRecipeForm(props) {
           <input
             type="text"
             id="recipe-name"
-            name="name/"
             value={name}
             placeholder="Name..."
             onChange={(event) => setName(event.target.value)}
@@ -66,23 +65,20 @@ function CreateRecipeForm(props) {
           <input
             type="text"
             id="recipe-link"
-            name="link/"
             value={link}
             placeholder="Link..."
             onChange={(event) => setLink(event.target.value)}
           ></input>
-          <input
+          <textarea
             type="text"
             id="recipe-description"
-            name="description/"
             value={description}
             placeholder="Description..."
             onChange={(event) => setDescription(event.target.value)}
-          ></input>
+          ></textarea>
           {props?.sourcePage === "RecipePage" && (
             <select
-              name="recipeBox"
-              id="recipeBox"
+              id="recipe-box-id"
               onChange={(event) => setRecipeBoxId(event.target.value)}
             >
               {boxOptions}
@@ -91,7 +87,6 @@ function CreateRecipeForm(props) {
           <input
             type="checkbox"
             id="recipe-has-made"
-            name="has-made/"
             checked={hasMade}
             onChange={(event) => setHasMade(!hasMade)}
           ></input>
@@ -99,16 +94,18 @@ function CreateRecipeForm(props) {
           <input
             type="checkbox"
             id="recipe-favorite"
-            name="favorite/"
             checked={favorite}
             onChange={(event) => setFavorite(!favorite)}
           ></input>
           <label htmlFor="recipe-favorite">Favorite</label>
         </form>
       </div>
-      <button onClick={() => props.setAddingRecipeToBox(false)}>
-        <span>Cancel</span>
-      </button>
+      {props?.sourcePage !== "RecipePage" && (
+        <button onClick={() => props.setAddingRecipeToBox(false)}>
+          <span>Cancel</span>
+        </button>
+      )}
+
       <button onClick={() => createRecipe()}>
         <span>Add</span>
       </button>
