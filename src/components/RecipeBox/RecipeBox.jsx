@@ -5,28 +5,12 @@ import CreateRecipeForm from "../CreateRecipeForm/CreateRecipeForm";
 import EditRecipeBoxForm from "../EditRecipeBoxForm/EditRecipeBoxForm";
 import Emoji from "../Emoji/Emoji";
 import { SymbolEmoji } from "../../enums/Emojis";
+import { adjustBrightness } from "../../helpers/colorHelpers";
 
 function RecipeBox(props) {
   const [addingRecipeToBox, setAddingRecipeToBox] = useState(false);
   const [editingRecipeBox, setEditingRecipeBox] = useState(false);
   const darkerColor = adjustBrightness(props.box.color, -80);
-
-  // from @supersan https://stackoverflow.com/a/57401891
-  function adjustBrightness(color, amount) {
-    return (
-      "#" +
-      color
-        .replace(/^#/, "")
-        .replace(/../g, (color) =>
-          (
-            "0" +
-            Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(
-              16
-            )
-          ).slice(-2)
-        )
-    );
-  }
 
   const deleteRecipeBox = async () => {
     // TODO create box that alerts users that all recipes are going to be deleted as well
@@ -70,14 +54,14 @@ function RecipeBox(props) {
         <button onClick={() => deleteRecipeBox()}>
           <Emoji
             type={"symbols"}
-            name={SymbolEmoji.FIRE}
+            name={SymbolEmoji.SCISSORS}
             width={30}
             height={30}
           />
         </button>
       </div>
-      <h3 className="recipe-box-name">{props.box.name}</h3>
-      <h3>{props.box.description}</h3>
+      <h4 className="recipe-box-name">{props.box.name}</h4>
+      <h4>{props.box.description}</h4>
       <h3># Recipes: {props.recipes.length}</h3>
       {addingRecipeToBox && (
         <CreateRecipeForm
