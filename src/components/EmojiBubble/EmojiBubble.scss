@@ -1,0 +1,31 @@
+.emoji-bubble {
+  position: fixed;
+  width: 60px;
+  height: 59px;
+  border-radius: 50%;
+  transition: 0.3s;
+  z-index: -2;
+  cursor: pointer;
+}
+
+.emoji-bubble:hover {
+  box-shadow: 0px 0px 0px 3px rgba(216, 28, 28, 0.726);
+  animation-name: bounce;
+  animation-duration: 4s;
+}
+
+.emoji-bubble > img {
+  max-width: 40px;
+  max-height: 40px;
+  margin: 8px auto 0px auto;
+  display: flex;
+}
+
+@keyframes bounce {
+  from {
+    background-color: red;
+  }
+  to {
+    background-color: yellow;
+  }
+}
