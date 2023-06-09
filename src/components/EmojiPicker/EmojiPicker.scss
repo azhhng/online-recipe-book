@@ -1,0 +1,26 @@
+@import "../../assets/sass/colors.scss";
+
+.emoji-picker-container {
+  position: fixed;
+  padding: 20px 20px;
+  height: 280px;
+  width: 200px;
+  margin-top: 55px;
+  margin-right: 20px;
+  border: 2px solid $blue;
+  background-color: $light-yellow;
+  border-radius: 20px;
+}
+
+.emoji-picker-container > .emoji-list {
+  display: grid;
+  grid-template-columns: 40px 40px 40px 40px;
+  grid-template-rows: 40px 40px 40px 40px;
+  column-gap: 10px;
+  row-gap: 10px;
+}
+
+.emoji-picker-container > button:disabled {
+  color: $grey;
+  cursor: default;
+}
