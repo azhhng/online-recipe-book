@@ -27,12 +27,14 @@ select {
 
 .recipe-form > select {
   height: 45px;
+  width: 90%;
 }
 
 .recipe-form > input[type="checkbox"],
 select {
   width: 15%;
   color: #000000;
+  margin-bottom: 10px;
 }
 
 #recipe-description {

@@ -33,13 +33,17 @@ function CreateRecipeForm(props) {
 
   useEffect(() => {
     const getRecipeBoxes = async () => {
-      const response = (
+      const recipeBoxes = (
         await axios.get(
           `${process.env.REACT_APP_API_ADDRESS}/${user?.sub}/recipe-box`
         )
       ).data;
 
-      const options = response.map((recipeBox) => {
+      if (recipeBoxes.length !== 0) {
+        setRecipeBoxId(recipeBoxes[0].recipe_box_id);
+      }
+
+      const options = recipeBoxes.map((recipeBox) => {
         return (
           <option key={recipeBox.recipe_box_id} value={recipeBox.recipe_box_id}>
             {recipeBox.name}
