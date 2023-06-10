@@ -28,6 +28,7 @@ function CreateRecipeBoxForm() {
     );
     console.log("Creating a recipe box...");
     console.log(response);
+    window.location.reload();
   };
 
   return (
