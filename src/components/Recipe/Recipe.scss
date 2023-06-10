@@ -26,6 +26,18 @@
   border-radius: 10px;
   float: left;
 }
+
+.recipe-container > a {
+  position: absolute;
+  margin: 0;
+  right: 20px;
+  bottom: 20px;
+  padding: 4px 8px;
+  border-radius: 10px;
+  background-color: $light-blue;
+  border: 2px solid $dark-blue;
+}
+
 .recipe-properties {
   position: absolute;
   margin-left: 70px;

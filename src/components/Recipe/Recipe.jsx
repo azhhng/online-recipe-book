@@ -14,15 +14,19 @@ function Recipe(props) {
   return (
     <div className="recipe-container">
       <h3 className="recipe-name-container">{props.name}</h3>
-      <a href={props.link} target="_blank" rel="noopener noreferrer">
+      <h4>{props.description}</h4>
+      <div className="recipe-box-tag">
         <Emoji
-          type={"symbols"}
-          name={SymbolEmoji.LINK}
+          type={"food"}
+          name={props.box.emoji}
           width={30}
           height={30}
+          style={{
+            backgroundColor: props.box.color,
+            border: `2px solid ${darkerColor}`,
+          }}
         />
-      </a>
-      <h3>{props.description}</h3>
+      </div>
       {(props.favorite || props.hasMade) && (
         <div className="recipe-properties">
           {props.favorite && (
@@ -43,18 +47,14 @@ function Recipe(props) {
           )}
         </div>
       )}
-      <div className="recipe-box-tag">
+      <a href={props.link} target="_blank" rel="noopener noreferrer">
         <Emoji
-          type={"food"}
-          name={props.box.emoji}
+          type={"symbols"}
+          name={SymbolEmoji.LINK}
           width={30}
           height={30}
-          style={{
-            backgroundColor: props.box.color,
-            border: `2px solid ${darkerColor}`,
-          }}
         />
-      </div>
+      </a>
     </div>
   );
 }
