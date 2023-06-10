@@ -3,6 +3,7 @@
 /* ===== Recipe CSS ===== */
 
 .recipe-container {
+  position: relative;
   float: left;
   padding: 5px 20px;
   height: 400px;
@@ -18,4 +19,29 @@
 .recipe-container > .recipe-name-container {
   color: $vibrant-blue;
   text-align: center;
+}
+
+.recipe-container > .recipe-box-tag > img {
+  padding: 6px 15px;
+  border-radius: 10px;
+  float: left;
+}
+.recipe-properties {
+  position: absolute;
+  margin-left: 70px;
+  bottom: 20px;
+  padding: 4px 8px;
+  border-radius: 10px;
+  background-color: $light-blue;
+  border: 2px solid $dark-blue;
+}
+
+.recipe-properties > img {
+  margin: 0px 5px;
+}
+
+.recipe-box-tag {
+  position: absolute;
+  left: 10;
+  bottom: 20px;
 }
