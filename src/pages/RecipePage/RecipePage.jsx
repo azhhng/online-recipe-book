@@ -8,6 +8,24 @@ import CreateRecipeForm from "../../components/CreateRecipeForm/CreateRecipeForm
 function RecipePage() {
   const { user } = useAuth0();
   const [recipes, setRecipes] = useState([]);
+  const [recipeBoxes, setRecipeBoxes] = useState({});
+
+  useEffect(() => {
+    const getRecipeBoxes = async () => {
+      const response = (
+        await axios.get(
+          `${process.env.REACT_APP_API_ADDRESS}/${user?.sub}/recipe-box`
+        )
+      ).data;
+
+      const recipeBoxObject = {};
+      response.map(
+        (recipeBox) => (recipeBoxObject[recipeBox.recipe_box_id] = recipeBox)
+      );
+      setRecipeBoxes(recipeBoxObject);
+    };
+    getRecipeBoxes();
+  }, [user]);
 
   useEffect(() => {
     const getRecipes = async () => {
@@ -26,7 +44,7 @@ function RecipePage() {
       {recipes.map((recipe) => (
         <Recipe
           key={recipe.recipe_id}
-          box={recipe.recipe_box_id}
+          box={recipeBoxes[recipe.recipe_box_id]}
           name={recipe.name}
           link={recipe.link}
           description={recipe.description ?? ""}
