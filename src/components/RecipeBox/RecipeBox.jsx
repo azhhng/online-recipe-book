@@ -4,8 +4,8 @@ import axios from "axios";
 import CreateRecipeForm from "../CreateRecipeForm/CreateRecipeForm";
 import EditRecipeBoxForm from "../EditRecipeBoxForm/EditRecipeBoxForm";
 import Emoji from "../Emoji/Emoji";
-import { SymbolEmoji } from "../../enums/Emojis";
 import { adjustBrightness } from "../../helpers/colorHelpers";
+import ActionsBar from "../ActionsBar/ActionsBar";
 
 function RecipeBox(props) {
   const [addingRecipeToBox, setAddingRecipeToBox] = useState(false);
@@ -18,7 +18,8 @@ function RecipeBox(props) {
       `${process.env.REACT_APP_API_ADDRESS}/recipe-box/${props.box.recipe_box_id}`
     );
     console.log(response);
-    console.log("Deleting a recipe...");
+    console.log("Deleting a recipe box...");
+    window.location.reload();
   };
 
   // TODO fix tool tip
@@ -34,32 +35,12 @@ function RecipeBox(props) {
           border: `2px solid ${darkerColor}`,
         }}
       />
-      <div className="actions-box">
-        <button onClick={() => setAddingRecipeToBox(true)}>
-          <Emoji
-            type={"symbols"}
-            name={SymbolEmoji.PLUS}
-            width={30}
-            height={30}
-          />
-        </button>
-        <button onClick={() => setEditingRecipeBox(true)}>
-          <Emoji
-            type={"symbols"}
-            name={SymbolEmoji.PENCIL}
-            width={30}
-            height={30}
-          />
-        </button>
-        <button onClick={() => deleteRecipeBox()}>
-          <Emoji
-            type={"symbols"}
-            name={SymbolEmoji.SCISSORS}
-            width={30}
-            height={30}
-          />
-        </button>
-      </div>
+      <ActionsBar
+        source={"RecipeBox"}
+        setAdd={setAddingRecipeToBox}
+        setEditing={setEditingRecipeBox}
+        delete={deleteRecipeBox}
+      />
       <h4 className="recipe-box-name">{props.box.name}</h4>
       <h4>{props.box.description}</h4>
       <h3># Recipes: {props.recipes.length}</h3>
@@ -73,7 +54,6 @@ function RecipeBox(props) {
       {editingRecipeBox && (
         <EditRecipeBoxForm
           box={props.box}
-          sourcePage={"RecipeBox"}
           setEditingRecipeBox={setEditingRecipeBox}
         />
       )}
