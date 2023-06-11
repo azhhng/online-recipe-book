@@ -12,8 +12,6 @@ function EditRecipeBoxForm(props) {
   const [openEmojiPicker, setOpenEmojiPicker] = useState(false);
   let emojiColor = "#fad017";
 
-  const fieldsToUpdate = {};
-
   const updateRecipeBox = async () => {
     const response = await axios.put(
       `${process.env.REACT_APP_API_ADDRESS}/recipe-box/${props.box.recipe_box_id}`,
@@ -40,7 +38,6 @@ function EditRecipeBoxForm(props) {
             value={name}
             placeholder="Name..."
             onChange={(event) => {
-              fieldsToUpdate["name"] = event.target.value;
               setName(event.target.value);
             }}
           ></input>
@@ -50,7 +47,6 @@ function EditRecipeBoxForm(props) {
             value={description}
             placeholder="Description..."
             onChange={(event) => {
-              fieldsToUpdate["description"] = event.target.value;
               setDescription(event.target.value);
             }}
           ></textarea>
