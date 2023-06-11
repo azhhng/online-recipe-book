@@ -48,6 +48,7 @@ function RecipePage() {
       {recipes.map((recipe) => (
         <Recipe
           key={recipe.recipe_id}
+          recipeId={recipe.recipe_id}
           box={recipeBoxes[recipe.recipe_box_id]}
           name={recipe.name}
           link={recipe.link}
