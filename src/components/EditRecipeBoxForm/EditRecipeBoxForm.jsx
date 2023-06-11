@@ -27,6 +27,7 @@ function EditRecipeBoxForm(props) {
     props.setEditingRecipeBox(false);
     console.log("Updating a recipe...");
     console.log(response);
+    window.location.reload();
   };
 
   return (

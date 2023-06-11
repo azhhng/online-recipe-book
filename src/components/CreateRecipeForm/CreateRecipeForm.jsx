@@ -29,6 +29,7 @@ function CreateRecipeForm(props) {
     );
     console.log("Creating a recipe...");
     console.log(response);
+    window.location.reload();
   };
 
   useEffect(() => {
