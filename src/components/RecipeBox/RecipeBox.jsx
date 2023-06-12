@@ -2,7 +2,7 @@ import "./RecipeBox.scss";
 import React, { useState } from "react";
 import axios from "axios";
 import CreateRecipeForm from "../CreateRecipeForm/CreateRecipeForm";
-import EditRecipeBoxForm from "../EditRecipeBoxForm/EditRecipeBoxForm";
+import RecipeBoxForm from "../RecipeBoxForm/RecipeBoxForm";
 import Emoji from "../Emoji/Emoji";
 import { adjustBrightness } from "../../helpers/colorHelpers";
 import ActionsBar from "../ActionsBar/ActionsBar";
@@ -52,7 +52,8 @@ function RecipeBox(props) {
         />
       )}
       {editingRecipeBox && (
-        <EditRecipeBoxForm
+        <RecipeBoxForm
+          action={"edit"}
           box={props.box}
           setEditingRecipeBox={setEditingRecipeBox}
         />

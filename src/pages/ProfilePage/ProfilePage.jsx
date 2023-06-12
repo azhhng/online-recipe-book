@@ -3,7 +3,7 @@ import axios from "axios";
 import "./ProfilePage.scss";
 import { useAuth0 } from "@auth0/auth0-react";
 import RecipeBox from "../../components/RecipeBox/RecipeBox";
-import CreateRecipeBoxForm from "../../components/CreateRecipeBoxForm/CreateRecipeBoxForm";
+import RecipeBoxForm from "../../components/RecipeBoxForm/RecipeBoxForm";
 
 function ProfilePage() {
   const { user } = useAuth0();
@@ -55,7 +55,7 @@ function ProfilePage() {
           recipes={recipesPerBox[recipeBox.recipe_box_id] ?? []}
         />
       ))}
-      <CreateRecipeBoxForm />
+      <RecipeBoxForm action={"create"} />
     </div>
   );
 }
