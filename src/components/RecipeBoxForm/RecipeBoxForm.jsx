@@ -1,16 +1,35 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./EditRecipeBoxForm.scss";
-import Emoji from "../Emoji/Emoji";
+import { useAuth0 } from "@auth0/auth0-react";
+import "./RecipeBoxForm.scss";
 import EmojiPicker from "../EmojiPicker/EmojiPicker";
+import { FoodEmoji } from "../../enums/Emojis";
+import Emoji from "../Emoji/Emoji";
 
-function EditRecipeBoxForm(props) {
-  const [name, setName] = useState(props.box.name);
-  const [description, setDescription] = useState(props.box.description);
-  const [color, setColor] = useState(props.box.color);
-  const [emoji, setEmoji] = useState(props.box.emoji);
+function RecipeBoxForm(props) {
+  const { user } = useAuth0();
+  const [name, setName] = useState(props.box?.name ?? "");
+  const [description, setDescription] = useState(props.box?.description ?? "");
+  const [color, setColor] = useState(props.box?.color ?? "#8fafe3");
+  const [emoji, setEmoji] = useState(props.box?.emoji ?? FoodEmoji.AVOCADO);
   const [openEmojiPicker, setOpenEmojiPicker] = useState(false);
+
   let emojiColor = "#fad017";
+
+  const createRecipeBox = async () => {
+    const response = await axios.post(
+      `${process.env.REACT_APP_API_ADDRESS}/${user.sub}/recipe-box`,
+      {
+        name,
+        description,
+        emoji,
+        color,
+      }
+    );
+    console.log("Creating a recipe box...");
+    console.log(response);
+    window.location.reload();
+  };
 
   const updateRecipeBox = async () => {
     const response = await axios.put(
@@ -37,18 +56,15 @@ function EditRecipeBoxForm(props) {
             id="recipe-box-name"
             value={name}
             placeholder="Name..."
-            onChange={(event) => {
-              setName(event.target.value);
-            }}
+            onChange={(event) => setName(event.target.value)}
           ></input>
           <textarea
             type="text"
             id="recipe-box-description"
             value={description}
             placeholder="Description..."
-            onChange={(event) => {
-              setDescription(event.target.value);
-            }}
+            rows="4"
+            onChange={(event) => setDescription(event.target.value)}
           ></textarea>
           <div
             className="emoji-holder"
@@ -85,14 +101,24 @@ function EditRecipeBoxForm(props) {
           ></input>
         </form>
       </div>
-      <button onClick={() => props.setEditingRecipeBox(false)}>
-        <span>Cancel</span>
-      </button>
-      <button onClick={() => updateRecipeBox()}>
-        <span>Update</span>
-      </button>
+
+      {props.action === "edit" && (
+        <button onClick={() => props.setEditingRecipeBox(false)}>
+          <span>Cancel</span>
+        </button>
+      )}
+      {props.action === "edit" && (
+        <button onClick={() => updateRecipeBox()}>
+          <span>Update</span>
+        </button>
+      )}
+      {props.action === "create" && (
+        <button onClick={() => createRecipeBox()}>
+          <span>Create</span>
+        </button>
+      )}
     </div>
   );
 }
 
-export default EditRecipeBoxForm;
+export default RecipeBoxForm;

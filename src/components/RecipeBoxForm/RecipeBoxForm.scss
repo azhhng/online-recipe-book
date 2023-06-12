@@ -23,6 +23,26 @@ select {
   color: #000000;
 }
 
+.recipe-box-form > input[type="color"],
+select {
+  font-size: 17px;
+  width: 70%;
+  height: 45px;
+  margin: 5px;
+  border: 2px solid $deepest-yellow;
+  box-sizing: border-box;
+  outline: none;
+  color: #000000;
+  cursor: pointer;
+}
+
+.emoji-holder {
+  width: 45px;
+  height: 45px;
+  float: left;
+  margin-right: 6px;
+}
+
 #recipe-box-description {
   font-size: 17px;
   width: 90%;
