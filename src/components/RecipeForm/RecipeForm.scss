@@ -12,6 +12,20 @@
   word-wrap: break-word;
 }
 
+.edit-recipe-form-container {
+  float: left;
+  padding: 5px 20px;
+  height: 400px;
+  width: 250px;
+  margin-top: 20px;
+  margin-right: 20px;
+  border: 2px solid $blue;
+  background-color: $light-yellow;
+  word-wrap: break-word;
+  position: absolute;
+  z-index: 2;
+}
+
 .recipe-form > input[type="text"],
 select {
   font-size: 17px;
@@ -40,7 +54,7 @@ select {
 #recipe-description {
   font-size: 17px;
   width: 90%;
-  height: 200px;
+  height: 150px;
   padding: 8px 10px;
   margin: 5px;
   border: 2px solid $deepest-yellow;
