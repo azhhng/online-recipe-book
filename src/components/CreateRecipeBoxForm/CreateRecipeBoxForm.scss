@@ -1,25 +1,5 @@
 @import "../../assets/sass/colors.scss";
 
-.recipe-box-form-container {
-  float: left;
-  padding: 5px 20px;
-  height: 400px;
-  width: 250px;
-  border: 2px solid $blue;
-  background-color: #fff;
-}
-.recipe-box-form > input[type="text"],
-select {
-  font-size: 17px;
-  width: 90%;
-  height: 35px;
-  padding: 8px 10px;
-  border: 2px solid $deepest-yellow;
-  box-sizing: border-box;
-  outline: none;
-  color: #000000;
-}
-
 .recipe-box-form > input[type="color"],
 select {
   font-size: 17px;
@@ -38,12 +18,4 @@ select {
   width: 45px;
   height: 45px;
   float: left;
-}
-
-::placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  font-family: "Source Code Pro", monospace;
-  color: #000000;
-  opacity: 1;
-  /* Firefox */
 }

@@ -2,12 +2,13 @@
 
 .recipe-box-form-container {
   float: left;
-  padding: 5px 40px;
-  min-height: 250px;
+  padding: 5px 20px;
+  height: 400px;
   width: 250px;
   margin-top: 20px;
   margin-right: 20px;
   border: 2px solid $vibrant-blue;
+  background-color: $light-yellow;
 }
 .recipe-box-form > input[type="text"],
 select {
@@ -33,12 +34,4 @@ select {
   outline: none;
   color: #000000;
   resize: none;
-}
-
-::placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  font-family: "Source Code Pro", monospace;
-  color: #000000;
-  opacity: 1;
-  /* Firefox */
 }

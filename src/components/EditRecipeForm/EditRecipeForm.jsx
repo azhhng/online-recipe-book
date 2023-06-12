@@ -53,7 +53,7 @@ function EditRecipeForm(props) {
   }, [user]);
 
   return (
-    <div className="recipe-form-container">
+    <div className="edit-recipe-form-container">
       <div>
         <form className="recipe-form">
           <input
