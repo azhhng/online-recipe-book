@@ -3,7 +3,7 @@ import axios from "axios";
 import "./RecipePage.scss";
 import Recipe from "../../components/Recipe/Recipe";
 import { useAuth0 } from "@auth0/auth0-react";
-import CreateRecipeForm from "../../components/CreateRecipeForm/CreateRecipeForm";
+import RecipeForm from "../../components/RecipeForm/RecipeForm";
 
 function RecipePage() {
   const { user } = useAuth0();
@@ -57,7 +57,7 @@ function RecipePage() {
           favorite={recipe.favorite}
         />
       ))}
-      <CreateRecipeForm sourcePage={"RecipePage"} />
+      <RecipeForm action={"create"} />
     </div>
   );
 }

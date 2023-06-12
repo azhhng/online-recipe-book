@@ -1,7 +1,7 @@
 import "./RecipeBox.scss";
 import React, { useState } from "react";
 import axios from "axios";
-import CreateRecipeForm from "../CreateRecipeForm/CreateRecipeForm";
+import RecipeForm from "../RecipeForm/RecipeForm";
 import RecipeBoxForm from "../RecipeBoxForm/RecipeBoxForm";
 import Emoji from "../Emoji/Emoji";
 import { adjustBrightness } from "../../helpers/colorHelpers";
@@ -45,9 +45,9 @@ function RecipeBox(props) {
       <h4>{props.box.description}</h4>
       <h3># Recipes: {props.recipes.length}</h3>
       {addingRecipeToBox && (
-        <CreateRecipeForm
+        <RecipeForm
+          action={"create"}
           recipeBox={props.box}
-          sourcePage={"RecipeBox"}
           setAddingRecipeToBox={setAddingRecipeToBox}
         />
       )}

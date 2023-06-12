@@ -4,8 +4,8 @@ import Emoji from "../Emoji/Emoji";
 import axios from "axios";
 import { FoodEmoji, SymbolEmoji } from "../../enums/Emojis";
 import { adjustBrightness } from "../../helpers/colorHelpers";
-import EditRecipeForm from "../EditRecipeForm/EditRecipeForm";
 import ActionsBar from "../ActionsBar/ActionsBar";
+import RecipeForm from "../RecipeForm/RecipeForm";
 
 function Recipe(props) {
   const [darkerColor, setDarkerColor] = useState("#fff");
@@ -74,7 +74,8 @@ function Recipe(props) {
         />
       </a>
       {editingRecipe && (
-        <EditRecipeForm
+        <RecipeForm
+          action={"edit"}
           recipeId={props.recipeId}
           name={props.name}
           favorite={props.favorite}
