@@ -40,8 +40,7 @@ function RecipePage() {
   }, [user]);
 
   if (Object.keys(recipeBoxes).length === 0) {
-    // TODO make this look nicer
-    return <div className="recipe-page-container">loading...</div>;
+    return <div className="recipe-page-container"></div>;
   }
   return (
     <div className="recipe-page-container">
