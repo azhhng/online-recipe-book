@@ -17,7 +17,7 @@ function RecipeForm(props) {
 
   const createRecipe = async () => {
     const response = await axios.post(
-      `${process.env.REACT_APP_API_ADDRESS}/${user?.sub}/recipe`,
+      `${process.env.REACT_APP_API_ADDRESS}/user/${user?.sub}/recipe`,
       {
         name,
         link,
@@ -55,7 +55,7 @@ function RecipeForm(props) {
     const getRecipeBoxes = async () => {
       const recipeBoxes = (
         await axios.get(
-          `${process.env.REACT_APP_API_ADDRESS}/${user?.sub}/recipe-box`
+          `${process.env.REACT_APP_API_ADDRESS}/user/${user?.sub}/recipe-box`
         )
       ).data;
       if (props.action === "create" && recipeBoxes.length !== 0) {
@@ -77,7 +77,7 @@ function RecipeForm(props) {
     <div
       className="recipe-form-container"
       style={
-        props.action === "edit" ? { position: "absolute", zIndex: "5" } : {}
+        props.action === "edit" ? { position: "absolute", zIndex: "2" } : {}
       }
     >
       <div>

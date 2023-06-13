@@ -18,7 +18,7 @@ function RecipeBoxForm(props) {
 
   const createRecipeBox = async () => {
     const response = await axios.post(
-      `${process.env.REACT_APP_API_ADDRESS}/${user.sub}/recipe-box`,
+      `${process.env.REACT_APP_API_ADDRESS}/user/${user.sub}/recipe-box`,
       {
         name,
         description,

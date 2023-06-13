@@ -14,7 +14,7 @@ function RecipePage() {
     const getRecipeBoxes = async () => {
       const response = (
         await axios.get(
-          `${process.env.REACT_APP_API_ADDRESS}/${user?.sub}/recipe-box`
+          `${process.env.REACT_APP_API_ADDRESS}/user/${user?.sub}/recipe-box`
         )
       ).data;
 
@@ -31,7 +31,7 @@ function RecipePage() {
     const getRecipes = async () => {
       const response = (
         await axios.get(
-          `${process.env.REACT_APP_API_ADDRESS}/${user?.sub}/recipe`
+          `${process.env.REACT_APP_API_ADDRESS}/user/${user?.sub}/recipe`
         )
       ).data;
       setRecipes(response);
