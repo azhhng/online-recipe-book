@@ -1,0 +1,41 @@
+@import "../../assets/sass/colors.scss";
+
+/* ===== Card CSS ===== */
+
+.user-form-container {
+  float: left;
+  padding: 5px 20px;
+  height: 400px;
+  width: 250px;
+  margin-top: 20px;
+  margin-right: 20px;
+  border-radius: 10px;
+  border: 2px solid $dark-blue;
+  box-shadow: 2px 2px 0px 2px $deepest-yellow;
+}
+
+.user-form-container > .user-form > input[type="text"],
+select {
+  font-size: 17px;
+  width: 90%;
+  height: 35px;
+  padding: 8px 10px;
+  margin: 5px;
+  border: 2px solid $deepest-yellow;
+  box-sizing: border-box;
+  outline: none;
+  color: #000000;
+}
+
+.user-form-container > .user-form > input[type="color"],
+select {
+  font-size: 17px;
+  width: 70%;
+  height: 45px;
+  margin: 5px;
+  border: 2px solid $deepest-yellow;
+  box-sizing: border-box;
+  outline: none;
+  color: #000000;
+  cursor: pointer;
+}
