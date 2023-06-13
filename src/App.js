@@ -5,6 +5,7 @@ import WelcomePage from "./pages/WelcomePage/WelcomePage";
 import Header from "./components/Header/Header";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import RecipePage from "./pages/RecipePage/RecipePage";
+import RecipeBoxPage from "./pages/RecipeBoxPage/RecipeBoxPage";
 
 function App() {
   return (
@@ -15,6 +16,10 @@ function App() {
           <Route path="/" element={<WelcomePage />} />
           <Route path="/profile/:user" element={<ProfilePage />} />
           <Route path="/profile/:user/recipes" element={<RecipePage />} />
+          <Route
+            path="/profile/:user/recipe-boxes"
+            element={<RecipeBoxPage />}
+          />
         </Routes>
       </div>
     </Router>
