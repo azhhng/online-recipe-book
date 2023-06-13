@@ -4,6 +4,8 @@ import "./RecipePage.scss";
 import Recipe from "../../components/Recipe/Recipe";
 import { useAuth0 } from "@auth0/auth0-react";
 import RecipeForm from "../../components/RecipeForm/RecipeForm";
+import PageTitleBar from "../../components/PageTitleBar/PageTitleBar";
+import { SymbolEmoji } from "../../enums/Emojis";
 
 function RecipePage() {
   const { user } = useAuth0();
@@ -44,6 +46,12 @@ function RecipePage() {
   }
   return (
     <div className="recipe-page-container">
+      <PageTitleBar
+        title="Your recipes..."
+        emojiType={"symbols"}
+        emoji={SymbolEmoji.LOVE_LETTER}
+        color="#8fa2e3"
+      />
       {recipes.map((recipe) => (
         <Recipe
           key={recipe.recipe_id}

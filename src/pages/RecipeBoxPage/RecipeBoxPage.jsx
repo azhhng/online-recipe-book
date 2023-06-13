@@ -4,6 +4,8 @@ import "./RecipeBoxPage.scss";
 import { useAuth0 } from "@auth0/auth0-react";
 import RecipeBox from "../../components/RecipeBox/RecipeBox";
 import RecipeBoxForm from "../../components/RecipeBoxForm/RecipeBoxForm";
+import PageTitleBar from "../../components/PageTitleBar/PageTitleBar";
+import { FoodEmoji } from "../../enums/Emojis";
 
 function RecipeBoxPage() {
   const { user } = useAuth0();
@@ -49,6 +51,12 @@ function RecipeBoxPage() {
 
   return (
     <div className="profile-page-container">
+      <PageTitleBar
+        title="Your recipe boxes..."
+        emojiType={"food"}
+        emoji={FoodEmoji.TAKEOUT_BOX}
+        color="#8fa2e3"
+      />
       {recipeBoxes.map((recipeBox) => (
         <RecipeBox
           key={recipeBox.recipe_box_id}

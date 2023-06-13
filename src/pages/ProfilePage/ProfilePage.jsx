@@ -3,6 +3,8 @@ import "./ProfilePage.scss";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 import UserForm from "../../components/UserForm/UserForm";
+import PageTitleBar from "../../components/PageTitleBar/PageTitleBar";
+import { FoodEmoji } from "../../enums/Emojis";
 
 function ProfilePage() {
   const { user } = useAuth0();
@@ -40,7 +42,12 @@ function ProfilePage() {
 
   return (
     <div className="profile-page-container">
-      Hi there {appUser?.name}!
+      <PageTitleBar
+        title={`Hi there${" " + appUser?.name}!`}
+        emojiType={"food"}
+        emoji={appUser?.emoji ?? FoodEmoji.AVOCADO}
+        color="#8fa2e3"
+      />
       <button onClick={() => deleteUser()}>Delete Account</button>
       <button onClick={() => setIsUserFormOpen(true)}>Edit Settings</button>
       {isUserFormOpen && (
