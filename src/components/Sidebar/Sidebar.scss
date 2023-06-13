@@ -5,16 +5,13 @@
   position: static;
 }
 
-.sidebar-container > .title-container > h1:hover {
-  cursor: pointer;
-}
-
 .sidebar-container > .title-container > h1 {
   font-size: 70px;
   color: $vibrant-blue;
   text-decoration: underline;
   margin: 0px;
   padding: 0px 0px 30px 0px;
+  cursor: pointer;
 }
 
 .sidebar-container > .title-container > h1 > span {
