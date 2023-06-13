@@ -1,8 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Header.scss";
-import LoginButton from "../LoginButton/LoginButton";
-import LogoutButton from "../LogoutButton/LogoutButton";
+import AuthorizationButton from "../AuthorizationButton/AuthorizationButton";
 import { useAuth0 } from "@auth0/auth0-react";
 import Emoji from "../Emoji/Emoji";
 import { FoodEmoji } from "../../enums/Emojis";
@@ -16,7 +15,9 @@ function Header(props) {
   return (
     <div className="header">
       {isOnProfile && (
-        <Link to={"/profile/" + location.pathname.split("/")[2]}>
+        <Link
+          to={"/profile/" + location.pathname.split("/")[2] + "/recipe-boxes"}
+        >
           Recipe Boxes
         </Link>
       )}
@@ -27,9 +28,10 @@ function Header(props) {
       )}
       <Emoji type={"food"} name={FoodEmoji.BENTO} width={50} height={35} />
       <Link to={"/"}>Home</Link>
-      {!user && <LoginButton />}
+      {!user && <AuthorizationButton action={"signup"} />}
+      {!user && <AuthorizationButton action={"login"} />}
       {user && <Link to={"/profile/" + user.sub.split("|")[1]}>Profile</Link>}
-      {user && <LogoutButton />}
+      {user && <AuthorizationButton action={"logout"} />}
     </div>
   );
 }
