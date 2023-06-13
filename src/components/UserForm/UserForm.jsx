@@ -24,6 +24,7 @@ function UserForm(props) {
     );
     console.log("Creating user...");
     console.log(response);
+    props.setIsUserFormOpen(false);
     window.location.reload();
   };
 
@@ -38,6 +39,7 @@ function UserForm(props) {
     );
     console.log("Updating user...");
     console.log(response);
+    props.setIsUserFormOpen(false);
     window.location.reload();
   };
 
@@ -85,6 +87,13 @@ function UserForm(props) {
           onChange={(event) => setColor(event.target.value)}
         ></input>
       </form>
+      <button
+        onClick={() => {
+          props.setIsUserFormOpen(false);
+        }}
+      >
+        <span>Cancel</span>
+      </button>
       <button
         onClick={() => {
           if (props.userInDatabase) {

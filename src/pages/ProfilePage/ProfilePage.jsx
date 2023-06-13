@@ -32,6 +32,7 @@ function ProfilePage() {
       } else {
         setAppUser(response.data[0]);
         setUserInDatabase(true);
+        setIsUserFormOpen(false);
       }
     };
     getUser();
@@ -47,6 +48,7 @@ function ProfilePage() {
           user={appUser}
           userId={user?.sub}
           userInDatabase={userInDatabase}
+          setIsUserFormOpen={setIsUserFormOpen}
         />
       )}
     </div>
