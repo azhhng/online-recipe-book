@@ -1,0 +1,23 @@
+@import "../../assets/sass/colors.scss";
+
+/* ===== Sidebar CSS ===== */
+.page-title-container {
+  display: flex;
+  width: 40em;
+  height: 4.5em;
+  cursor: pointer;
+  text-decoration: underline;
+  border-radius: 15px;
+  align-items: center;
+}
+
+.page-title-container > img {
+  order: 1;
+  margin-right: 10px;
+}
+
+.page-title-container > h1 {
+  order: 2;
+  font-size: 40px;
+  color: $dark-blue;
+}
