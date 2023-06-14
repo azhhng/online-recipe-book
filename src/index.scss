@@ -24,10 +24,11 @@ a {
   color: $solid-yellow;
   letter-spacing: 1px;
   background-color: #ffffff00;
-  margin: 28px 25px;
   border: none;
   cursor: pointer;
   text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 15px;
 }
 
 button {
@@ -41,6 +42,17 @@ button {
   background-color: #ffffff00;
   border: none;
   cursor: pointer;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-decoration-color: $blue;
+  text-decoration-thickness: 3px;
+}
+
+button:hover {
+  text-decoration: underline;
+  text-decoration-color: $blue;
 }
 
 ::placeholder {
