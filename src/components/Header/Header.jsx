@@ -18,7 +18,7 @@ function Header(props) {
         <Link
           to={"/profile/" + location.pathname.split("/")[2] + "/recipe-boxes"}
         >
-          Recipe Boxes
+          Recipe boxes
         </Link>
       )}
       {isOnProfile && (
@@ -28,6 +28,7 @@ function Header(props) {
       )}
       <Emoji type={"food"} name={FoodEmoji.BENTO} width={50} height={35} />
       <Link to={"/"}>Home</Link>
+      <Link to={"/explore"}>Explore</Link>
       {!user && <AuthorizationButton action={"signup"} />}
       {!user && <AuthorizationButton action={"login"} />}
       {user && <Link to={"/profile/" + user.sub.split("|")[1]}>Profile</Link>}

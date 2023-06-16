@@ -7,7 +7,7 @@ const AuthorizationButton = (props) => {
   if (props.action === "signup") {
     return (
       <button onClick={() => loginWithRedirect({ screen_hint: "signup" })}>
-        Sign Up
+        Sign up
       </button>
     );
   } else if (props.action === "login") {
@@ -19,7 +19,7 @@ const AuthorizationButton = (props) => {
           logout({ logoutParams: { returnTo: window.location.origin } })
         }
       >
-        Sign Out
+        Sign out
       </button>
     );
   }

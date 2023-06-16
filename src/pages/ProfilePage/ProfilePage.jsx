@@ -43,13 +43,13 @@ function ProfilePage() {
   return (
     <div className="profile-page-container">
       <PageTitleBar
-        title={`Hi there${" " + appUser?.name}!`}
+        title={appUser?.name ? `Hi there, ${appUser?.name}!` : "Hi there!"}
         emojiType={"food"}
         emoji={appUser?.emoji ?? FoodEmoji.AVOCADO}
         color="#8fa2e3"
       />
-      <button onClick={() => deleteUser()}>Delete Account</button>
-      <button onClick={() => setIsUserFormOpen(true)}>Edit Settings</button>
+      <button onClick={() => deleteUser()}>Delete account</button>
+      <button onClick={() => setIsUserFormOpen(true)}>Edit settings</button>
       {isUserFormOpen && (
         <UserForm
           user={appUser}
