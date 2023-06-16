@@ -81,6 +81,7 @@ export const SymbolEmoji = Object.freeze({
   FIRE: "fire",
   LINK: "link",
   LOVE_LETTER: "love_letter",
+  MIRROR_BALL: "mirror_ball",
   MULTIPLY: "multiply",
   PAGE: "page",
   PENCIL: "pencil",
