@@ -42,7 +42,18 @@ function RecipePage() {
   }, [user]);
 
   if (Object.keys(recipeBoxes).length === 0) {
-    return <div className="recipe-page-container"></div>;
+    return (
+      <div className="recipe-page-container">
+        <PageTitleBar
+          title="Your recipes..."
+          emojiType={"symbols"}
+          emoji={SymbolEmoji.LOVE_LETTER}
+          color="#8fa2e3"
+          description="Add some recipes to get started!"
+        />
+        <RecipeForm action={"create"} />
+      </div>
+    );
   }
   return (
     <div className="recipe-page-container">
