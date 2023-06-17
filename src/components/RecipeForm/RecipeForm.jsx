@@ -128,6 +128,7 @@ function RecipeForm(props) {
             checked={favorite}
             onChange={(event) => setFavorite(!favorite)}
           ></input>
+          <label htmlFor="recipe-favorite">Favorite</label>
         </form>
       </div>
       {props.action === "edit" && (
