@@ -14,3 +14,5 @@ yarn-error.log*
 .npm/
 .env
 todos.txt
+.env.dev
+.env.prod
