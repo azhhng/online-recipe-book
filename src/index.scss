@@ -15,6 +15,15 @@ h1 {
   color: $grey;
 }
 
+h1,
+h2,
+h3,
+h4,
+span,
+p {
+  cursor: default;
+}
+
 a {
   font-family: "Trebuchet MS";
   -webkit-font-smoothing: antialiased;
@@ -24,11 +33,11 @@ a {
   color: $solid-yellow;
   letter-spacing: 1px;
   background-color: #ffffff00;
-  border: none;
   cursor: pointer;
   text-decoration: none;
   padding: 10px 15px;
   border-radius: 15px;
+  border: none;
 }
 
 button {
@@ -42,17 +51,6 @@ button {
   background-color: #ffffff00;
   border: none;
   cursor: pointer;
-}
-
-a:hover {
-  text-decoration: underline;
-  text-decoration-color: $blue;
-  text-decoration-thickness: 3px;
-}
-
-button:hover {
-  text-decoration: underline;
-  text-decoration-color: $blue;
 }
 
 ::placeholder {

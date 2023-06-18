@@ -3,24 +3,37 @@
 /* ===== Header CSS ===== */
 
 .header {
-  transition: 0.3s;
-  min-height: 80px;
-  margin-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: right;
+  min-height: 80px;
+  margin-bottom: 20px;
   background: $light-yellow;
   box-shadow: 0px 3px $deepest-yellow;
 }
 
 .header > img {
-  margin: auto 25px;
-}
-
-.header > .title-link {
-  text-decoration: underline;
+  margin: 0px 20px;
 }
 
 .header > button {
-  margin: 0px 25px;
+  padding: 10px 15px;
+  border-radius: 15px;
+  margin-right: 10px;
+  border: 3px solid $light-yellow;
+}
+
+.header > a {
+  padding: 10px 15px;
+  border-radius: 15px;
+  margin-right: 10px;
+  border: 3px solid $light-yellow;
+}
+
+.header > a:hover {
+  border: 3px solid $deep-yellow;
+}
+
+.header > button:hover {
+  border: 3px solid $deep-yellow;
 }
