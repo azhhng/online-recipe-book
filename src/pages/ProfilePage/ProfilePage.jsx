@@ -7,6 +7,8 @@ import PageTitleBar from "../../components/PageTitleBar/PageTitleBar";
 import { FoodEmoji } from "../../enums/Emojis";
 import ErrorPopup from "../../components/ErrorPopup/ErrorPopup";
 
+// TODO fix calling API with user?.sub and base it off the url instead
+// TODO fix alignment of editing profile form
 function ProfilePage() {
   const { user } = useAuth0();
   const { logout } = useAuth0();
@@ -59,14 +61,16 @@ function ProfilePage() {
       {showError && (
         <ErrorPopup message={errorMessage} setShowError={setShowError} />
       )}
-      <PageTitleBar
-        title={appUser?.name ? `Hi there, ${appUser?.name}!` : "Hi there!"}
-        emojiType={"food"}
-        emoji={appUser?.emoji ?? FoodEmoji.AVOCADO}
-        color="#8fa2e3"
-      />
-      <button onClick={() => deleteUser()}>Delete account</button>
-      <button onClick={() => setIsUserFormOpen(true)}>Edit settings</button>
+      <div className="title-container">
+        <PageTitleBar
+          title={appUser?.name ? `Hi there, ${appUser?.name}!` : "Hi there!"}
+          emojiType={"food"}
+          emoji={appUser?.emoji ?? FoodEmoji.AVOCADO}
+          color="#8fa2e3"
+        />
+        <button onClick={() => deleteUser()}>Delete account</button>
+        <button onClick={() => setIsUserFormOpen(true)}>Edit settings</button>
+      </div>
       {isUserFormOpen && (
         <UserForm
           user={appUser}
