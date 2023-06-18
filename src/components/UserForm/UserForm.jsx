@@ -4,47 +4,64 @@ import EmojiPicker from "../EmojiPicker/EmojiPicker";
 import axios from "axios";
 import { FoodEmoji } from "../../enums/Emojis";
 import Emoji from "../Emoji/Emoji";
+import ErrorPopup from "../ErrorPopup/ErrorPopup";
 
 function UserForm(props) {
   const [name, setName] = useState(props.user?.name ?? "");
   const [color, setColor] = useState(props.user?.color ?? "#8fafe3");
   const [emoji, setEmoji] = useState(props.user?.emoji ?? FoodEmoji.AVOCADO);
   const [openEmojiPicker, setOpenEmojiPicker] = useState(false);
+  // error handling
+  const [showError, setShowError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   let emojiColor = "#fad017";
 
   const createUser = async () => {
-    const response = await axios.post(
-      `${process.env.REACT_APP_API_ADDRESS}/user/${props.userId}`,
-      {
-        name,
-        color,
-        emoji,
-      }
-    );
-    console.log("Creating user...");
-    console.log(response);
-    props.setIsUserFormOpen(false);
-    window.location.reload();
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_ADDRESS}/user/${props.userId}`,
+        {
+          name,
+          color,
+          emoji,
+        }
+      );
+      console.log("Creating user...");
+      console.log(response);
+      props.setIsUserFormOpen(false);
+      window.location.reload();
+    } catch (error) {
+      setShowError(true);
+      setErrorMessage(error.response.data);
+    }
   };
 
   const updateUser = async () => {
-    const response = await axios.put(
-      `${process.env.REACT_APP_API_ADDRESS}/user/${props.userId}`,
-      {
-        name,
-        color,
-        emoji,
-      }
-    );
-    console.log("Updating user...");
-    console.log(response);
-    props.setIsUserFormOpen(false);
-    window.location.reload();
+    try {
+      const response = await axios.put(
+        `${process.env.REACT_APP_API_ADDRESS}/user/${props.userId}`,
+        {
+          name,
+          color,
+          emoji,
+        }
+      );
+      console.log("Updating user...");
+      console.log(response);
+      props.setIsUserFormOpen(false);
+      window.location.reload();
+    } catch (error) {
+      setShowError(true);
+      setErrorMessage(error.response.data);
+    }
   };
 
   return (
     <div className="user-form-container">
+      {showError && (
+        <ErrorPopup message={errorMessage} setShowError={setShowError} />
+      )}
       <form className="user-form">
         <input
           type="text"

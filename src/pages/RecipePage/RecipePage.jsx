@@ -6,37 +6,51 @@ import { useAuth0 } from "@auth0/auth0-react";
 import RecipeForm from "../../components/RecipeForm/RecipeForm";
 import PageTitleBar from "../../components/PageTitleBar/PageTitleBar";
 import { SymbolEmoji } from "../../enums/Emojis";
+import ErrorPopup from "../../components/ErrorPopup/ErrorPopup";
 
 function RecipePage() {
   const { user } = useAuth0();
   const [recipes, setRecipes] = useState([]);
   const [recipeBoxes, setRecipeBoxes] = useState({});
+  // error handling
+  const [showError, setShowError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     const getRecipeBoxes = async () => {
-      const response = (
-        await axios.get(
-          `${process.env.REACT_APP_API_ADDRESS}/user/${user?.sub}/recipe-box`
-        )
-      ).data;
+      try {
+        const response = (
+          await axios.get(
+            `${process.env.REACT_APP_API_ADDRESS}/user/${user?.sub}/recipe-box`
+          )
+        ).data;
 
-      const recipeBoxObject = {};
-      response.map(
-        (recipeBox) => (recipeBoxObject[recipeBox.recipe_box_id] = recipeBox)
-      );
-      setRecipeBoxes(recipeBoxObject);
+        const recipeBoxObject = {};
+        response.map(
+          (recipeBox) => (recipeBoxObject[recipeBox.recipe_box_id] = recipeBox)
+        );
+        setRecipeBoxes(recipeBoxObject);
+      } catch (error) {
+        setShowError(true);
+        setErrorMessage(error.response.data);
+      }
     };
     getRecipeBoxes();
   }, [user]);
 
   useEffect(() => {
     const getRecipes = async () => {
-      const response = (
-        await axios.get(
-          `${process.env.REACT_APP_API_ADDRESS}/user/${user?.sub}/recipe`
-        )
-      ).data;
-      setRecipes(response);
+      try {
+        const response = (
+          await axios.get(
+            `${process.env.REACT_APP_API_ADDRESS}/user/${user?.sub}/recipe`
+          )
+        ).data;
+        setRecipes(response);
+      } catch (error) {
+        setShowError(true);
+        setErrorMessage(error.response.data);
+      }
     };
     getRecipes();
   }, [user]);
@@ -44,6 +58,9 @@ function RecipePage() {
   if (Object.keys(recipeBoxes).length === 0) {
     return (
       <div className="recipe-page-container">
+        {showError && (
+          <ErrorPopup message={errorMessage} setShowError={setShowError} />
+        )}
         <PageTitleBar
           title="Your recipes..."
           emojiType={"symbols"}
@@ -57,6 +74,9 @@ function RecipePage() {
   }
   return (
     <div className="recipe-page-container">
+      {showError && (
+        <ErrorPopup message={errorMessage} setShowError={setShowError} />
+      )}
       <PageTitleBar
         title="Your recipes..."
         emojiType={"symbols"}

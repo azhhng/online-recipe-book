@@ -6,25 +6,37 @@ import RecipeBoxForm from "../RecipeBoxForm/RecipeBoxForm";
 import Emoji from "../Emoji/Emoji";
 import { adjustBrightness } from "../../helpers/colorHelpers";
 import ActionsBar from "../ActionsBar/ActionsBar";
+import ErrorPopup from "../ErrorPopup/ErrorPopup";
 
 function RecipeBox(props) {
   const [addingRecipeToBox, setAddingRecipeToBox] = useState(false);
   const [editingRecipeBox, setEditingRecipeBox] = useState(false);
   const darkerColor = adjustBrightness(props.box.color, -80);
+  // error handling
+  const [showError, setShowError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const deleteRecipeBox = async () => {
     // TODO create box that alerts users that all recipes are going to be deleted as well
-    const response = await axios.delete(
-      `${process.env.REACT_APP_API_ADDRESS}/recipe-box/${props.box.recipe_box_id}`
-    );
-    console.log(response);
-    console.log("Deleting a recipe box...");
-    window.location.reload();
+    try {
+      const response = await axios.delete(
+        `${process.env.REACT_APP_API_ADDRESS}/recipe-box/${props.box.recipe_box_id}`
+      );
+      console.log(response);
+      console.log("Deleting a recipe box...");
+      window.location.reload();
+    } catch (error) {
+      setShowError(true);
+      setErrorMessage(error.response.data);
+    }
   };
 
   // TODO fix tool tip
   return (
     <div className="recipe-box">
+      {showError && (
+        <ErrorPopup message={errorMessage} setShowError={setShowError} />
+      )}
       <Emoji
         type={"food"}
         name={props.box.emoji}

@@ -6,44 +6,55 @@ import RecipeBox from "../../components/RecipeBox/RecipeBox";
 import RecipeBoxForm from "../../components/RecipeBoxForm/RecipeBoxForm";
 import PageTitleBar from "../../components/PageTitleBar/PageTitleBar";
 import { FoodEmoji } from "../../enums/Emojis";
+import ErrorPopup from "../../components/ErrorPopup/ErrorPopup";
 
 function RecipeBoxPage() {
   const { user } = useAuth0();
-  console.log(user);
   const [recipeBoxes, setRecipeBoxes] = useState([]);
   const [recipesPerBox, setRecipesPerBox] = useState({});
+  // error handling
+  const [showError, setShowError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     const getRecipes = async () => {
-      const response = (
-        await axios.get(
-          `${process.env.REACT_APP_API_ADDRESS}/user/${user?.sub}/recipe`
-        )
-      ).data;
+      try {
+        const response = (
+          await axios.get(
+            `${process.env.REACT_APP_API_ADDRESS}/user/${user?.sub}/recipe`
+          )
+        ).data;
 
-      const recipesPerBoxObject = {};
-      for (const recipe in response) {
-        if (
-          recipesPerBoxObject.hasOwnProperty(response[recipe].recipe_box_id)
-        ) {
-          recipesPerBoxObject[response[recipe].recipe_box_id].push(
-            response[recipe]
-          );
-        } else {
-          recipesPerBoxObject[response[recipe].recipe_box_id] = [
-            response[recipe],
-          ];
+        const recipesPerBoxObject = {};
+        for (const recipe in response) {
+          if (
+            recipesPerBoxObject.hasOwnProperty(response[recipe].recipe_box_id)
+          ) {
+            recipesPerBoxObject[response[recipe].recipe_box_id].push(
+              response[recipe]
+            );
+          } else {
+            recipesPerBoxObject[response[recipe].recipe_box_id] = [
+              response[recipe],
+            ];
+          }
         }
+        setRecipesPerBox(recipesPerBoxObject);
+      } catch (error) {
+        setShowError(true);
+        setErrorMessage(error.response.data);
       }
-      setRecipesPerBox(recipesPerBoxObject);
     };
     const getRecipeBoxes = async () => {
-      const response = (
-        await axios.get(
+      try {
+        const response = await axios.get(
           `${process.env.REACT_APP_API_ADDRESS}/user/${user?.sub}/recipe-box`
-        )
-      ).data;
-      setRecipeBoxes(response);
+        );
+        setRecipeBoxes(response.data);
+      } catch (error) {
+        setShowError(true);
+        setErrorMessage(error.response.data);
+      }
     };
     getRecipes();
     getRecipeBoxes();
@@ -51,6 +62,9 @@ function RecipeBoxPage() {
 
   return (
     <div className="profile-page-container">
+      {showError && (
+        <ErrorPopup message={errorMessage} setShowError={setShowError} />
+      )}
       <PageTitleBar
         title="Your recipe boxes..."
         emojiType={"food"}

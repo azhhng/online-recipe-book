@@ -6,26 +6,38 @@ import { FoodEmoji, SymbolEmoji } from "../../enums/Emojis";
 import { adjustBrightness } from "../../helpers/colorHelpers";
 import ActionsBar from "../ActionsBar/ActionsBar";
 import RecipeForm from "../RecipeForm/RecipeForm";
+import ErrorPopup from "../ErrorPopup/ErrorPopup";
 
 function Recipe(props) {
   const [darkerColor, setDarkerColor] = useState("#fff");
   const [editingRecipe, setEditingRecipe] = useState(false);
+  // error handling
+  const [showError, setShowError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     setDarkerColor(adjustBrightness(props.box.color, -80));
   }, [props]);
 
   const deleteRecipe = async () => {
-    const response = await axios.delete(
-      `${process.env.REACT_APP_API_ADDRESS}/recipe/${props.recipeId}`
-    );
-    console.log(response);
-    console.log("Deleting a recipe...");
-    window.location.reload();
+    try {
+      const response = await axios.delete(
+        `${process.env.REACT_APP_API_ADDRESS}/recipe/${props.recipeId}`
+      );
+      console.log(response);
+      console.log("Deleting a recipe...");
+      window.location.reload();
+    } catch (error) {
+      setShowError(true);
+      setErrorMessage(error.response.data);
+    }
   };
 
   return (
     <div className="recipe-container">
+      {showError && (
+        <ErrorPopup message={errorMessage} setShowError={setShowError} />
+      )}
       <ActionsBar
         source={"Recipe"}
         setEditing={setEditingRecipe}

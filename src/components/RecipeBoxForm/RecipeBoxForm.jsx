@@ -5,6 +5,7 @@ import "./RecipeBoxForm.scss";
 import EmojiPicker from "../EmojiPicker/EmojiPicker";
 import { FoodEmoji } from "../../enums/Emojis";
 import Emoji from "../Emoji/Emoji";
+import ErrorPopup from "../ErrorPopup/ErrorPopup";
 
 function RecipeBoxForm(props) {
   const { user } = useAuth0();
@@ -13,42 +14,58 @@ function RecipeBoxForm(props) {
   const [color, setColor] = useState(props.box?.color ?? "#8fafe3");
   const [emoji, setEmoji] = useState(props.box?.emoji ?? FoodEmoji.AVOCADO);
   const [openEmojiPicker, setOpenEmojiPicker] = useState(false);
+  // error handling
+  const [showError, setShowError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   let emojiColor = "#fad017";
 
   const createRecipeBox = async () => {
-    const response = await axios.post(
-      `${process.env.REACT_APP_API_ADDRESS}/user/${user.sub}/recipe-box`,
-      {
-        name,
-        description,
-        emoji,
-        color,
-      }
-    );
-    console.log("Creating a recipe box...");
-    console.log(response);
-    window.location.reload();
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_ADDRESS}/user/${user.sub}/recipe-box`,
+        {
+          name,
+          description,
+          emoji,
+          color,
+        }
+      );
+      console.log("Creating a recipe box...");
+      console.log(response);
+      window.location.reload();
+    } catch (error) {
+      setShowError(true);
+      setErrorMessage(error.response.data);
+    }
   };
 
   const updateRecipeBox = async () => {
-    const response = await axios.put(
-      `${process.env.REACT_APP_API_ADDRESS}/recipe-box/${props.box.recipe_box_id}`,
-      {
-        description: description,
-        emoji: emoji,
-        name: name,
-        color: color,
-      }
-    );
-    props.setEditingRecipeBox(false);
-    console.log("Updating a recipe...");
-    console.log(response);
-    window.location.reload();
+    try {
+      const response = await axios.put(
+        `${process.env.REACT_APP_API_ADDRESS}/recipe-box/${props.box.recipe_box_id}`,
+        {
+          description: description,
+          emoji: emoji,
+          name: name,
+          color: color,
+        }
+      );
+      props.setEditingRecipeBox(false);
+      console.log("Updating a recipe...");
+      console.log(response);
+      window.location.reload();
+    } catch (error) {
+      setShowError(true);
+      setErrorMessage(error.response.data);
+    }
   };
 
   return (
     <div className="recipe-box-form-container">
+      {showError && (
+        <ErrorPopup message={errorMessage} setShowError={setShowError} />
+      )}
       <div>
         <form className="recipe-box-form">
           <input
