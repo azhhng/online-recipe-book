@@ -91,3 +91,8 @@ export const SymbolEmoji = Object.freeze({
   SPARKLING_HEART: "sparkling_heart",
   WASTEBASKET: "wastebasket",
 });
+
+// Face enums
+export const FaceEmoji = Object.freeze({
+  WORRIED_FACE: "worried_face",
+});
