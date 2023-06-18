@@ -1,11 +1,15 @@
+@import "../../assets/sass/colors.scss";
+
+/* ===== ErrorPopup SCSS ===== */
+
 .error-popup-container {
   position: fixed;
   display: flex;
   align-items: center;
   right: 10px;
   top: 10px;
-  background-color: #ffd9d9;
-  border: 2px solid #ff3838;
+  background-color: $light-red;
+  border: 2px solid $red;
   padding: 20px 20px;
   border-radius: 10px;
 }
