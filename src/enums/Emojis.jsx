@@ -86,6 +86,7 @@ export const SymbolEmoji = Object.freeze({
   PAGE: "page",
   PENCIL: "pencil",
   PLUS: "plus",
+  RED_MULTIPLY: "red_multiply",
   SCISSORS: "scissors",
   SPARKLING_HEART: "sparkling_heart",
   WASTEBASKET: "wastebasket",
