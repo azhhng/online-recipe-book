@@ -109,7 +109,7 @@ function UserForm(props) {
           props.setIsUserFormOpen(false);
         }}
       >
-        <span>Cancel</span>
+        Cancel
       </button>
       <button
         onClick={() => {
@@ -120,7 +120,7 @@ function UserForm(props) {
           }
         }}
       >
-        <span>Save</span>
+        Save
       </button>
     </div>
   );

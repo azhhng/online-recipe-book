@@ -155,24 +155,18 @@ function RecipeForm(props) {
         <label htmlFor="recipe-favorite">Favorite</label>
       </form>
       {props.action === "edit" && (
-        <button onClick={() => props.setEditingRecipe(false)}>
-          <span>Cancel</span>
-        </button>
+        <button onClick={() => props.setEditingRecipe(false)}>Cancel</button>
       )}
       {props.action === "edit" && (
-        <button onClick={() => updateRecipe()}>
-          <span>Update</span>
-        </button>
+        <button onClick={() => updateRecipe()}>Update</button>
       )}
       {props.action === "create" && (
         <button onClick={() => props.setAddingRecipeToBox(false)}>
-          <span>Cancel</span>
+          Cancel
         </button>
       )}
       {props.action === "create" && (
-        <button onClick={() => createRecipe()}>
-          <span>Add</span>
-        </button>
+        <button onClick={() => createRecipe()}>Add</button>
       )}
     </div>
   );

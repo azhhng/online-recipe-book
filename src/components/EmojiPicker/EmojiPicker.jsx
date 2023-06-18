@@ -88,10 +88,10 @@ function EmojiPicker(props) {
       </button>
       <div className="emoji-list">{emojis[currentPage]}</div>
       <button onClick={(e) => backPage(e)} disabled={disableBackButton}>
-        <span>Back</span>
+        Back
       </button>
       <button onClick={(e) => nextPage(e)} disabled={disableNextButton}>
-        <span>Next</span>
+        Next
       </button>
     </div>
   );
