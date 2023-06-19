@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import "./ProfilePage.scss";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -6,11 +7,14 @@ import UserForm from "../../components/UserForm/UserForm";
 import PageTitleBar from "../../components/PageTitleBar/PageTitleBar";
 import { FoodEmoji } from "../../enums/Emojis";
 import ErrorPopup from "../../components/ErrorPopup/ErrorPopup";
+import { splitUserSub, splitPathSub } from "../../helpers/stringHelpers";
 
 // TODO fix calling API with user?.sub and base it off the url instead
 // TODO fix alignment of editing profile form
 function ProfilePage() {
   const { user } = useAuth0();
+  const userSub = splitUserSub(user?.sub);
+  const currentProfileSub = splitPathSub(useLocation().pathname);
   const { logout } = useAuth0();
   const [appUser, setAppUser] = useState({});
   const [userInDatabase, setUserInDatabase] = useState(true);
@@ -22,7 +26,7 @@ function ProfilePage() {
   const deleteUser = async () => {
     try {
       const response = await axios.delete(
-        `${process.env.REACT_APP_API_ADDRESS}/user/${user?.sub}`
+        `${process.env.REACT_APP_API_ADDRESS}/user/${userSub}`
       );
       console.log(response);
       console.log("Deleting a user...");
@@ -37,7 +41,7 @@ function ProfilePage() {
     const getUser = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API_ADDRESS}/user/${user?.sub}`
+          `${process.env.REACT_APP_API_ADDRESS}/user/${currentProfileSub}`
         );
         console.log("Getting user information...");
         if (response.data.length === 0) {
@@ -54,7 +58,7 @@ function ProfilePage() {
       }
     };
     getUser();
-  }, [user]);
+  }, [currentProfileSub]);
 
   return (
     <div className="profile-page-container">
@@ -74,7 +78,7 @@ function ProfilePage() {
       {isUserFormOpen && (
         <UserForm
           user={appUser}
-          userId={user?.sub}
+          userId={userSub}
           userInDatabase={userInDatabase}
           setIsUserFormOpen={setIsUserFormOpen}
         />

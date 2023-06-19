@@ -5,6 +5,7 @@ import AuthorizationButton from "../AuthorizationButton/AuthorizationButton";
 import { useAuth0 } from "@auth0/auth0-react";
 import Emoji from "../Emoji/Emoji";
 import { FoodEmoji } from "../../enums/Emojis";
+import { splitUserSub } from "../../helpers/stringHelpers";
 
 function Header(props) {
   const location = useLocation();
@@ -31,7 +32,7 @@ function Header(props) {
       <Link to={"/explore"}>Explore</Link>
       {!user && <AuthorizationButton action={"signup"} />}
       {!user && <AuthorizationButton action={"login"} />}
-      {user && <Link to={"/profile/" + user.sub.split("|")[1]}>Profile</Link>}
+      {user && <Link to={"/profile/" + splitUserSub(user?.sub)}>Profile</Link>}
       {user && <AuthorizationButton action={"logout"} />}
     </div>
   );

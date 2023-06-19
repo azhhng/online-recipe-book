@@ -7,9 +7,11 @@ import RecipeForm from "../../components/RecipeForm/RecipeForm";
 import PageTitleBar from "../../components/PageTitleBar/PageTitleBar";
 import { SymbolEmoji } from "../../enums/Emojis";
 import ErrorPopup from "../../components/ErrorPopup/ErrorPopup";
+import { splitUserSub } from "../../helpers/stringHelpers";
 
 function RecipePage() {
   const { user } = useAuth0();
+  const userSub = splitUserSub(user?.sub);
   const [recipes, setRecipes] = useState([]);
   const [recipeBoxes, setRecipeBoxes] = useState({});
   // error handling
@@ -21,7 +23,7 @@ function RecipePage() {
       try {
         const response = (
           await axios.get(
-            `${process.env.REACT_APP_API_ADDRESS}/user/${user?.sub}/recipe-box`
+            `${process.env.REACT_APP_API_ADDRESS}/user/${userSub}/recipe-box`
           )
         ).data;
 
@@ -36,14 +38,14 @@ function RecipePage() {
       }
     };
     getRecipeBoxes();
-  }, [user]);
+  }, [userSub]);
 
   useEffect(() => {
     const getRecipes = async () => {
       try {
         const response = (
           await axios.get(
-            `${process.env.REACT_APP_API_ADDRESS}/user/${user?.sub}/recipe`
+            `${process.env.REACT_APP_API_ADDRESS}/user/${userSub}/recipe`
           )
         ).data;
         setRecipes(response);
@@ -53,7 +55,7 @@ function RecipePage() {
       }
     };
     getRecipes();
-  }, [user]);
+  }, [userSub]);
 
   if (Object.keys(recipeBoxes).length === 0) {
     return (

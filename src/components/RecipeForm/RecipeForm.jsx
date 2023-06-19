@@ -3,9 +3,11 @@ import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./RecipeForm.scss";
 import ErrorPopup from "../ErrorPopup/ErrorPopup";
+import { splitUserSub } from "../../helpers/stringHelpers";
 
 function RecipeForm(props) {
   const { user } = useAuth0();
+  const userSub = splitUserSub(user?.sub);
   const [name, setName] = useState(props?.name ?? "");
   const [description, setDescription] = useState(props?.description ?? "");
   const [link, setLink] = useState(props?.link ?? "");
@@ -22,7 +24,7 @@ function RecipeForm(props) {
   const createRecipe = async () => {
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_API_ADDRESS}/user/${user?.sub}/recipe`,
+        `${process.env.REACT_APP_API_ADDRESS}/user/${userSub}/recipe`,
         {
           name,
           link,
@@ -70,7 +72,7 @@ function RecipeForm(props) {
       try {
         const recipeBoxes = (
           await axios.get(
-            `${process.env.REACT_APP_API_ADDRESS}/user/${user?.sub}/recipe-box`
+            `${process.env.REACT_APP_API_ADDRESS}/user/${userSub}/recipe-box`
           )
         ).data;
         if (props.action === "create" && recipeBoxes.length !== 0) {
@@ -93,7 +95,7 @@ function RecipeForm(props) {
       }
     };
     getRecipeBoxes();
-  }, [user, props.action]);
+  }, [userSub, props.action]);
 
   return (
     <div

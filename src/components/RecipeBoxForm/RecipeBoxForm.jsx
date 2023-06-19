@@ -6,9 +6,11 @@ import EmojiPicker from "../EmojiPicker/EmojiPicker";
 import { FoodEmoji } from "../../enums/Emojis";
 import Emoji from "../Emoji/Emoji";
 import ErrorPopup from "../ErrorPopup/ErrorPopup";
+import { splitUserSub } from "../../helpers/stringHelpers";
 
 function RecipeBoxForm(props) {
   const { user } = useAuth0();
+  const userSub = splitUserSub(user?.sub);
   const [name, setName] = useState(props.box?.name ?? "");
   const [description, setDescription] = useState(props.box?.description ?? "");
   const [color, setColor] = useState(props.box?.color ?? "#8fafe3");
@@ -23,7 +25,7 @@ function RecipeBoxForm(props) {
   const createRecipeBox = async () => {
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_API_ADDRESS}/user/${user.sub}/recipe-box`,
+        `${process.env.REACT_APP_API_ADDRESS}/user/${userSub}/recipe-box`,
         {
           name,
           description,

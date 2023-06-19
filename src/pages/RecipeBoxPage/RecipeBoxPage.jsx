@@ -7,9 +7,11 @@ import RecipeBoxForm from "../../components/RecipeBoxForm/RecipeBoxForm";
 import PageTitleBar from "../../components/PageTitleBar/PageTitleBar";
 import { FoodEmoji } from "../../enums/Emojis";
 import ErrorPopup from "../../components/ErrorPopup/ErrorPopup";
+import { splitUserSub } from "../../helpers/stringHelpers";
 
 function RecipeBoxPage() {
   const { user } = useAuth0();
+  const userSub = splitUserSub(user?.sub);
   const [recipeBoxes, setRecipeBoxes] = useState([]);
   const [recipesPerBox, setRecipesPerBox] = useState({});
   // error handling
@@ -21,7 +23,7 @@ function RecipeBoxPage() {
       try {
         const response = (
           await axios.get(
-            `${process.env.REACT_APP_API_ADDRESS}/user/${user?.sub}/recipe`
+            `${process.env.REACT_APP_API_ADDRESS}/user/${userSub}/recipe`
           )
         ).data;
 
@@ -48,7 +50,7 @@ function RecipeBoxPage() {
     const getRecipeBoxes = async () => {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API_ADDRESS}/user/${user?.sub}/recipe-box`
+          `${process.env.REACT_APP_API_ADDRESS}/user/${userSub}/recipe-box`
         );
         setRecipeBoxes(response.data);
       } catch (error) {
@@ -58,7 +60,7 @@ function RecipeBoxPage() {
     };
     getRecipes();
     getRecipeBoxes();
-  }, [user]);
+  }, [userSub]);
 
   return (
     <div className="profile-page-container">
