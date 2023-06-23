@@ -26,7 +26,7 @@ function ProfilePage() {
   const deleteUser = async () => {
     try {
       const response = await axios.delete(
-        `${process.env.REACT_APP_API_ADDRESS}/user/${userSub}`
+        `${process.env.REACT_APP_API_ADDRESS}/user/${user?.sub}`
       );
       console.log(response);
       console.log("Deleting a user...");
@@ -44,14 +44,9 @@ function ProfilePage() {
           `${process.env.REACT_APP_API_ADDRESS}/user/${currentProfileSub}`
         );
         console.log("Getting user information...");
-        if (response.data.length === 0) {
-          setIsUserFormOpen(true);
-          setUserInDatabase(false);
-        } else {
-          setAppUser(response.data[0]);
-          setUserInDatabase(true);
-          setIsUserFormOpen(false);
-        }
+        setAppUser(response.data[0]);
+        setUserInDatabase(true);
+        setIsUserFormOpen(false);
       } catch (error) {
         setShowError(true);
         setErrorMessage(error.response.data);
@@ -81,6 +76,7 @@ function ProfilePage() {
           userId={userSub}
           userInDatabase={userInDatabase}
           setIsUserFormOpen={setIsUserFormOpen}
+          sourcePage={"ProfilePage"}
         />
       )}
     </div>
