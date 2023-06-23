@@ -2,13 +2,17 @@
 
 .recipe-box-form-container {
   float: left;
-  padding: 5px 20px;
+  padding: 10px 0px 0px 20px;
   height: 400px;
-  width: 250px;
+  width: 300px;
   margin-top: 20px;
   margin-right: 20px;
-  border: 2px solid $vibrant-blue;
+  border-radius: 10px;
+  border: 2px solid $dark-blue;
+  box-shadow: 2px 2px 0px 2px $deepest-yellow;
   background-color: $light-yellow;
+  position: static;
+  z-index: 2;
 }
 .recipe-box-form > input[type="text"],
 select {

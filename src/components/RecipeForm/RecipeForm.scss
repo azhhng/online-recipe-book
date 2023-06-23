@@ -2,25 +2,30 @@
 
 .recipe-form-container {
   float: left;
-  padding: 5px 20px;
+  padding: 30px 0px 30px 20px;
   height: 400px;
-  width: 250px;
+  width: 300px;
   margin-top: 20px;
   margin-right: 20px;
-  border: 2px solid $blue;
-  background-color: $light-yellow;
+  border-radius: 10px;
+  border: 2px solid $dark-blue;
+  box-shadow: 2px 2px 0px 2px $deepest-yellow;
   word-wrap: break-word;
+  background-color: $light-yellow;
+  position: static;
+  z-index: 2;
 }
 
 .edit-recipe-form-container {
   float: left;
-  padding: 5px 20px;
+  padding: 30px 20px;
   height: 400px;
   width: 250px;
   margin-top: 20px;
   margin-right: 20px;
-  border: 2px solid $blue;
-  background-color: $light-yellow;
+  border-radius: 10px;
+  border: 2px solid $dark-blue;
+  box-shadow: 2px 2px 0px 2px $deepest-yellow;
   word-wrap: break-word;
   position: absolute;
   z-index: 2;
