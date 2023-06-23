@@ -122,13 +122,22 @@ function RecipeBoxForm(props) {
       </div>
 
       {props.action === "edit" && (
-        <button onClick={() => props.setEditingRecipeBox(false)}>Cancel</button>
+        <button
+          id="form-button"
+          onClick={() => props.setEditingRecipeBox(false)}
+        >
+          Cancel
+        </button>
       )}
       {props.action === "edit" && (
-        <button onClick={() => updateRecipeBox()}>Update</button>
+        <button id="form-button" onClick={() => updateRecipeBox()}>
+          Update
+        </button>
       )}
       {props.action === "create" && (
-        <button onClick={() => createRecipeBox()}>Create</button>
+        <button id="form-button" onClick={() => createRecipeBox()}>
+          Create
+        </button>
       )}
     </div>
   );

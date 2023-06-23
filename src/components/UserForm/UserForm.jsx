@@ -107,6 +107,7 @@ function UserForm(props) {
       </form>
       {props.sourcePage !== "OnboardingPage" && (
         <button
+          id="form-button"
           onClick={() => {
             props.setIsUserFormOpen(false);
           }}
@@ -116,6 +117,7 @@ function UserForm(props) {
       )}
 
       <button
+        id="form-button"
         onClick={() => {
           if (props.sourcePage === "OnboardingPage") {
             createUser();
