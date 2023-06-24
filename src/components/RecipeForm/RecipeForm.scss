@@ -1,24 +1,8 @@
 @import "../../assets/sass/colors.scss";
 
-.recipe-form-container {
-  float: left;
-  padding: 30px 0px 30px 20px;
-  height: 400px;
-  width: 300px;
-  margin-top: 20px;
-  margin-right: 20px;
-  border-radius: 10px;
-  border: 2px solid $dark-blue;
-  box-shadow: 2px 2px 0px 2px $deepest-yellow;
-  word-wrap: break-word;
-  background-color: $light-yellow;
-  position: static;
-  z-index: 2;
-}
-
+.recipe-form-container,
 .edit-recipe-form-container {
   float: left;
-  padding: 30px 20px;
   height: 400px;
   width: 250px;
   margin-top: 20px;
@@ -27,9 +11,13 @@
   border: 2px solid $dark-blue;
   box-shadow: 2px 2px 0px 2px $deepest-yellow;
   word-wrap: break-word;
+  background-color: $light-yellow;
   position: absolute;
   z-index: 2;
+  padding: 30px 20px;
 }
+
+// name and link
 
 .recipe-form > input[type="text"],
 select {
@@ -44,18 +32,7 @@ select {
   color: #000000;
 }
 
-.recipe-form > select {
-  height: 45px;
-  width: 90%;
-}
-
-.recipe-form > input[type="checkbox"],
-select {
-  width: 15%;
-  color: #000000;
-  margin-bottom: 10px;
-}
-
+// description
 #recipe-description {
   font-size: 17px;
   width: 90%;
@@ -67,4 +44,18 @@ select {
   outline: none;
   color: #000000;
   resize: none;
+}
+
+// recipe box
+.recipe-form > select {
+  height: 45px;
+  width: 90%;
+}
+
+// check boxes
+.recipe-form > input[type="checkbox"],
+select {
+  width: 15%;
+  color: #000000;
+  margin-bottom: 10px;
 }
