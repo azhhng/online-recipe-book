@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./ProfilePage.scss";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -12,6 +13,7 @@ import { splitUserSub, splitPathSub } from "../../helpers/stringHelpers";
 // TODO fix calling API with user?.sub and base it off the url instead
 // TODO fix alignment of editing profile form
 function ProfilePage() {
+  const navigate = useNavigate();
   const { user } = useAuth0();
   const userSub = splitUserSub(user?.sub);
   const currentProfileSub = splitPathSub(useLocation().pathname);
@@ -44,6 +46,9 @@ function ProfilePage() {
           `${process.env.REACT_APP_API_ADDRESS}/user/${currentProfileSub}`
         );
         console.log("Getting user information...");
+        if (response.data.length === 0) {
+          navigate("/onboarding", { state: { from: "profile" } });
+        }
         setAppUser(response.data[0]);
         setUserInDatabase(true);
         setIsUserFormOpen(false);
@@ -53,7 +58,7 @@ function ProfilePage() {
       }
     };
     getUser();
-  }, [currentProfileSub]);
+  }, [currentProfileSub, navigate]);
 
   return (
     <div className="profile-page-container">
