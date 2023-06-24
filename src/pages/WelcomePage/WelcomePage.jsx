@@ -41,8 +41,8 @@ function WelcomePage() {
         style={{
           backgroundColor: "#ffdfd1",
           border: `3px solid ${adjustBrightness("#ffdfd1", -40)}`,
-          bottom: "420px",
-          left: "430px",
+          bottom: "400px",
+          left: "490px",
         }}
       />
       <EmojiBubble
@@ -68,8 +68,8 @@ function WelcomePage() {
         style={{
           backgroundColor: "#e6e7ff",
           border: `3px solid ${adjustBrightness("#e6e7ff", -40)}`,
-          bottom: "900px",
-          left: "1430px",
+          bottom: "600px",
+          left: "1480px",
         }}
       />
       <EmojiBubble
@@ -77,7 +77,7 @@ function WelcomePage() {
         style={{
           backgroundColor: "#ebf5ff",
           border: `3px solid ${adjustBrightness("#ebf5ff", -40)}`,
-          bottom: "870px",
+          bottom: "770px",
           left: "230px",
         }}
       />
