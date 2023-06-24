@@ -6,12 +6,33 @@ const AuthorizationButton = (props) => {
 
   if (props.action === "signup") {
     return (
-      <button onClick={() => loginWithRedirect({ screen_hint: "signup" })}>
+      <button
+        onClick={() =>
+          loginWithRedirect({
+            screen_hint: "signup",
+            authorizationParams: {
+              redirect_uri: `${process.env.REACT_APP_ADDRESS}/onboarding`,
+            },
+          })
+        }
+      >
         Sign up
       </button>
     );
   } else if (props.action === "login") {
-    return <button onClick={() => loginWithRedirect()}>Login</button>;
+    return (
+      <button
+        onClick={() =>
+          loginWithRedirect({
+            authorizationParams: {
+              redirect_uri: `${process.env.REACT_APP_ADDRESS}`,
+            },
+          })
+        }
+      >
+        Login
+      </button>
+    );
   } else if (props.action === "logout") {
     return (
       <button

@@ -9,6 +9,7 @@ import { splitUserSub } from "../../helpers/stringHelpers";
 function OnboardingPage() {
   const { user } = useAuth0();
   const userSub = splitUserSub(user?.sub);
+
   return (
     <div className="profile-page-container">
       <div className="title-container">
