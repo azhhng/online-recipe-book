@@ -17,7 +17,7 @@ function OnboardingPage() {
   const [showError, setShowError] = useState(redirectedFromProfile);
 
   return (
-    <div className="profile-page-container">
+    <div className="onboarding-container">
       {redirectedFromProfile && showError && (
         <ErrorPopup
           message={"Please finish onboarding before proceeding!"}
@@ -33,12 +33,14 @@ function OnboardingPage() {
         />
       </div>
 
-      <UserForm
-        user={user?.sub}
-        userId={userSub}
-        userInDatabase={false}
-        sourcePage={"OnboardingPage"}
-      />
+      <div className="onboarding-user-container">
+        <UserForm
+          user={user?.sub}
+          userId={userSub}
+          userInDatabase={false}
+          sourcePage={"OnboardingPage"}
+        />
+      </div>
     </div>
   );
 }

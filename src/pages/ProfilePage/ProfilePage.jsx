@@ -72,9 +72,13 @@ function ProfilePage() {
           emoji={appUser?.emoji ?? FoodEmoji.AVOCADO}
           color="#8fa2e3"
         />
-        <button onClick={() => deleteUser()}>Delete account</button>
-        <button onClick={() => setIsUserFormOpen(true)}>Edit settings</button>
       </div>
+      <button id="form-button" onClick={() => deleteUser()}>
+        Delete account
+      </button>
+      <button id="form-button" onClick={() => setIsUserFormOpen(true)}>
+        Edit settings
+      </button>
       {isUserFormOpen && (
         <UserForm
           user={appUser}

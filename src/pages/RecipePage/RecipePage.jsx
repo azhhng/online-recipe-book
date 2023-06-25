@@ -95,19 +95,21 @@ function RecipePage() {
         emoji={SymbolEmoji.LOVE_LETTER}
         color="#8fa2e3"
       />
-      {recipes.map((recipe) => (
-        <Recipe
-          key={recipe.recipe_id}
-          recipeId={recipe.recipe_id}
-          box={recipeBoxes[recipe.recipe_box_id]}
-          name={recipe.name}
-          link={recipe.link}
-          description={recipe.description ?? ""}
-          hasMade={recipe.has_made}
-          favorite={recipe.favorite}
-        />
-      ))}
-      <RecipeForm action={"create"} />
+      <div className="recipe-group-container">
+        {recipes.map((recipe) => (
+          <Recipe
+            key={recipe.recipe_id}
+            recipeId={recipe.recipe_id}
+            box={recipeBoxes[recipe.recipe_box_id]}
+            name={recipe.name}
+            link={recipe.link}
+            description={recipe.description ?? ""}
+            hasMade={recipe.has_made}
+            favorite={recipe.favorite}
+          />
+        ))}
+        <RecipeForm action={"create"} />
+      </div>
     </div>
   );
 }

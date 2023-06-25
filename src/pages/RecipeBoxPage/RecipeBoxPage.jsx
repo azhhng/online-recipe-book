@@ -75,14 +75,16 @@ function RecipeBoxPage() {
         emoji={FoodEmoji.TAKEOUT_BOX}
         color="#8fa2e3"
       />
-      {recipeBoxes.map((recipeBox) => (
-        <RecipeBox
-          key={recipeBox.recipe_box_id}
-          box={recipeBox}
-          recipes={recipesPerBox[recipeBox.recipe_box_id] ?? []}
-        />
-      ))}
-      <RecipeBoxForm action={"create"} />
+      <div className="recipe-box-group-container">
+        {recipeBoxes.map((recipeBox) => (
+          <RecipeBox
+            key={recipeBox.recipe_box_id}
+            box={recipeBox}
+            recipes={recipesPerBox[recipeBox.recipe_box_id] ?? []}
+          />
+        ))}
+        <RecipeBoxForm action={"create"} />
+      </div>
     </div>
   );
 }
