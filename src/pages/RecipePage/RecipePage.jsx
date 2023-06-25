@@ -43,7 +43,9 @@ function RecipePage() {
         setErrorMessage(error.response.data);
       }
     };
-    getRecipeBoxes();
+    if (userSub) {
+      getRecipeBoxes();
+    }
   }, [userSub]);
 
   useEffect(() => {
@@ -60,7 +62,9 @@ function RecipePage() {
         setErrorMessage(error.response.data);
       }
     };
-    getRecipes();
+    if (userSub) {
+      getRecipes();
+    }
   }, [userSub]);
 
   if (Object.keys(recipeBoxes).length === 0) {

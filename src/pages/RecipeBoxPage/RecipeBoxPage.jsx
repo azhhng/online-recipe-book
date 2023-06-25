@@ -58,8 +58,10 @@ function RecipeBoxPage() {
         setErrorMessage(error.response.data);
       }
     };
-    getRecipes();
-    getRecipeBoxes();
+    if (userSub) {
+      getRecipes();
+      getRecipeBoxes();
+    }
   }, [userSub]);
 
   return (
