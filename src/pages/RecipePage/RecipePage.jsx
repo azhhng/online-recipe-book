@@ -78,9 +78,10 @@ function RecipePage() {
           emojiType={"symbols"}
           emoji={SymbolEmoji.LOVE_LETTER}
           color="#8fa2e3"
-          description="Add some recipes to get started!"
         />
-        <RecipeForm action={"create"} />
+        <div className="recipe-group-container">
+          <RecipeForm action={"create"} />
+        </div>
       </div>
     );
   }
