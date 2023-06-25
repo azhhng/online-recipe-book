@@ -14,8 +14,8 @@ function PageTitleBar(props) {
         <Emoji
           type={props.emojiType}
           name={props.emoji}
-          width={50}
-          height={50}
+          width={35}
+          height={35}
         />
         <h1>{props.title}</h1>
       </div>
