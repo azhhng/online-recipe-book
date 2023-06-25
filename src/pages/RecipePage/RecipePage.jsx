@@ -26,6 +26,12 @@ function RecipePage() {
             `${process.env.REACT_APP_API_ADDRESS}/user/${userSub}/recipe-box`
           )
         ).data;
+        if (response.length === 0) {
+          setShowError(true);
+          setErrorMessage(
+            "Make a recipe box first before creating your first recipe!"
+          );
+        }
 
         const recipeBoxObject = {};
         response.map(
