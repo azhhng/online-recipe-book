@@ -7,7 +7,7 @@ import Emoji from "../Emoji/Emoji";
 import { FoodEmoji } from "../../enums/Emojis";
 import { splitUserSub } from "../../helpers/stringHelpers";
 
-function Header(props) {
+function Header() {
   const location = useLocation();
   const isOnProfile =
     location.pathname.split("/")[1] === "profile" ? true : false;
