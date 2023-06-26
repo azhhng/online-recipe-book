@@ -5,7 +5,7 @@ import { FoodEmoji, SymbolEmoji } from "../../enums/Emojis";
 import { adjustBrightness } from "../../helpers/colorHelpers";
 
 function EmojiPicker(props) {
-  const emojisPerPage = 16;
+  const EMOJIS_PER_PAGE = 16;
   const [emojis, setEmojis] = useState({});
   const [currentPage, setCurrentPage] = useState(0);
   const [disableBackButton, setDisableBackButton] = useState(true);
@@ -13,7 +13,7 @@ function EmojiPicker(props) {
 
   const backPage = (e) => {
     e.preventDefault(); // prevent refreshing of page
-    const newPage = currentPage - emojisPerPage;
+    const newPage = currentPage - EMOJIS_PER_PAGE;
     setCurrentPage(newPage);
     if (newPage === 0) {
       setDisableBackButton(true);
@@ -24,10 +24,10 @@ function EmojiPicker(props) {
 
   const nextPage = (e) => {
     e.preventDefault(); // prevent refreshing of page
-    const newPage = currentPage + emojisPerPage;
+    const newPage = currentPage + EMOJIS_PER_PAGE;
     setCurrentPage(newPage);
     setDisableBackButton(false);
-    if (newPage + emojisPerPage > Object.keys(FoodEmoji).length) {
+    if (newPage + EMOJIS_PER_PAGE > Object.keys(FoodEmoji).length) {
       setDisableNextButton(true);
     }
   };
@@ -40,7 +40,7 @@ function EmojiPicker(props) {
     let darkerColor = adjustBrightness(color, -50);
 
     Object.keys(FoodEmoji).forEach(function (key, index) {
-      if (index % emojisPerPage === 0) {
+      if (index % EMOJIS_PER_PAGE === 0) {
         emojiObject[index] = [];
         page = index;
       }
