@@ -20,7 +20,14 @@
   row-gap: 10px;
 }
 
-.emoji-picker-container > button:disabled {
+.emoji-picker-container > .button-bar {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.emoji-picker-container > .button-bar > button:disabled {
   color: $grey;
   cursor: default;
 }
