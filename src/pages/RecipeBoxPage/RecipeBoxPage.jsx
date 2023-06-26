@@ -5,7 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import RecipeBox from "../../components/RecipeBox/RecipeBox";
 import RecipeBoxForm from "../../components/RecipeBoxForm/RecipeBoxForm";
 import PageTitleBar from "../../components/PageTitleBar/PageTitleBar";
-import { FoodEmoji } from "../../enums/Emojis";
+import { SymbolEmoji } from "../../enums/Emojis";
 import ErrorPopup from "../../components/ErrorPopup/ErrorPopup";
 import { splitUserSub } from "../../helpers/stringHelpers";
 
@@ -71,8 +71,8 @@ function RecipeBoxPage() {
       )}
       <PageTitleBar
         title="Your recipe boxes..."
-        emojiType={"food"}
-        emoji={FoodEmoji.TAKEOUT_BOX}
+        emojiType={"symbols"}
+        emoji={SymbolEmoji.PACKAGE}
         color="#8fa2e3"
       />
       <div className="recipe-box-group-container">
