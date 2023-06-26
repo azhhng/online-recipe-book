@@ -11,26 +11,25 @@ function EmojiPicker(props) {
   const [disableBackButton, setDisableBackButton] = useState(true);
   const [disableNextButton, setDisableNextButton] = useState(false);
 
-  // TODO fix the back and next page buttons :(
   const backPage = (e) => {
     e.preventDefault(); // prevent refreshing of page
-
-    if (currentPage === 0) {
+    const newPage = currentPage - emojisPerPage;
+    setCurrentPage(newPage);
+    if (newPage === 0) {
       setDisableBackButton(true);
     } else {
-      setCurrentPage(currentPage - emojisPerPage);
       setDisableNextButton(false);
     }
   };
 
   const nextPage = (e) => {
     e.preventDefault(); // prevent refreshing of page
-
-    if (currentPage + emojisPerPage > Object.keys(FoodEmoji).length) {
+    const newPage = currentPage + emojisPerPage;
+    setCurrentPage(newPage);
+    setDisableBackButton(false);
+    if (newPage + emojisPerPage > Object.keys(FoodEmoji).length) {
       setDisableNextButton(true);
     }
-    setCurrentPage(currentPage + emojisPerPage);
-    setDisableBackButton(false);
   };
 
   useEffect(() => {
