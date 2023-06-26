@@ -15,10 +15,9 @@ function EmojiPicker(props) {
     e.preventDefault(); // prevent refreshing of page
     const newPage = currentPage - EMOJIS_PER_PAGE;
     setCurrentPage(newPage);
+    setDisableNextButton(false);
     if (newPage === 0) {
       setDisableBackButton(true);
-    } else {
-      setDisableNextButton(false);
     }
   };
 
