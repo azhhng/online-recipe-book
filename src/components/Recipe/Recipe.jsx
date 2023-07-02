@@ -43,7 +43,7 @@ function Recipe(props) {
         setEditing={setEditingRecipe}
         delete={deleteRecipe}
       />
-      <h3>{props.name}</h3>
+      <h3 id="recipe-name">{props.name}</h3>
       <h4>{props.description}</h4>
       <div className="recipe-box-tag">
         <Emoji
