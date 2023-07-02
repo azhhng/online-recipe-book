@@ -50,7 +50,7 @@ function WelcomePage() {
         style={{
           backgroundColor: "#ffe3bd",
           border: `3px solid ${adjustBrightness("#ffe3bd", -40)}`,
-          bottom: "370px",
+          bottom: "300px",
           left: "1230px",
         }}
       />

@@ -8,9 +8,12 @@
 }
 
 .guide-container {
-  float: right;
+  float: left;
   margin-top: 10%;
   padding: 20px 50px;
+  background-color: $light-blue;
+  border: 2px solid $dark-blue;
+  border-radius: 15px;
 }
 
 .welcome-container > .guide-container > h1 {
