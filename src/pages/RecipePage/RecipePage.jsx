@@ -93,7 +93,7 @@ function RecipePage() {
       <PageTitleBar
         title="Your recipes..."
         emojiType={"symbols"}
-        emoji={SymbolEmoji.LOVE_LETTER}
+        emoji={SymbolEmoji.SCROLL}
         color="#8fa2e3"
       />
       <div className="recipe-group-container">
