@@ -23,6 +23,12 @@
   bottom: 290px;
 }
 
+.recipe-container > #recipe-description {
+  position: absolute;
+  bottom: 140px;
+  border: 0px;
+}
+
 .recipe-container > .recipe-box-tag > img {
   padding: 6px 15px;
   border-radius: 10px;
