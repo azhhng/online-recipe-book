@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./RecipeBoxForm.scss";
 import EmojiPicker from "../EmojiPicker/EmojiPicker";
@@ -7,6 +6,7 @@ import { FoodEmoji } from "../../enums/Emojis";
 import Emoji from "../Emoji/Emoji";
 import ErrorPopup from "../ErrorPopup/ErrorPopup";
 import { splitUserSub } from "../../helpers/stringHelpers";
+import { addRecipeBox, editRecipeBox } from "../../api/recipeBox";
 
 function RecipeBoxForm(props) {
   const { user } = useAuth0();
@@ -24,17 +24,7 @@ function RecipeBoxForm(props) {
 
   const createRecipeBox = async () => {
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_API_ADDRESS}/user/${userSub}/recipe-box`,
-        {
-          name,
-          description,
-          emoji,
-          color,
-        }
-      );
-      console.log("Creating a recipe box...");
-      console.log(response);
+      await addRecipeBox(userSub, { name, description, emoji, color });
       window.location.reload();
     } catch (error) {
       setShowError(true);
@@ -44,18 +34,13 @@ function RecipeBoxForm(props) {
 
   const updateRecipeBox = async () => {
     try {
-      const response = await axios.put(
-        `${process.env.REACT_APP_API_ADDRESS}/recipe-box/${props.box.recipe_box_id}`,
-        {
-          description: description,
-          emoji: emoji,
-          name: name,
-          color: color,
-        }
-      );
+      await editRecipeBox(props.box.recipe_box_id, {
+        name,
+        description,
+        emoji,
+        color,
+      });
       props.setEditingRecipeBox(false);
-      console.log("Updating a recipe...");
-      console.log(response);
       window.location.reload();
     } catch (error) {
       setShowError(true);

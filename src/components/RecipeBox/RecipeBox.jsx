@@ -1,12 +1,12 @@
 import "./RecipeBox.scss";
 import React, { useState } from "react";
-import axios from "axios";
 import RecipeForm from "../RecipeForm/RecipeForm";
 import RecipeBoxForm from "../RecipeBoxForm/RecipeBoxForm";
 import Emoji from "../Emoji/Emoji";
 import { adjustBrightness } from "../../helpers/colorHelpers";
 import ActionsBar from "../ActionsBar/ActionsBar";
 import ErrorPopup from "../ErrorPopup/ErrorPopup";
+import { removeRecipeBox } from "../../api/recipeBox";
 
 function RecipeBox(props) {
   const [addingRecipeToBox, setAddingRecipeToBox] = useState(false);
@@ -19,11 +19,7 @@ function RecipeBox(props) {
   const deleteRecipeBox = async () => {
     // TODO create box that alerts users that all recipes are going to be deleted as well
     try {
-      const response = await axios.delete(
-        `${process.env.REACT_APP_API_ADDRESS}/recipe-box/${props.box.recipe_box_id}`
-      );
-      console.log(response);
-      console.log("Deleting a recipe box...");
+      await removeRecipeBox(props.box.recipe_box_id);
       window.location.reload();
     } catch (error) {
       setShowError(true);

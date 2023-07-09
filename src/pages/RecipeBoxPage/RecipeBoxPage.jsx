@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import "./RecipeBoxPage.scss";
 import { useAuth0 } from "@auth0/auth0-react";
 import RecipeBox from "../../components/RecipeBox/RecipeBox";
@@ -8,6 +7,8 @@ import PageTitleBar from "../../components/PageTitleBar/PageTitleBar";
 import { SymbolEmoji } from "../../enums/Emojis";
 import ErrorPopup from "../../components/ErrorPopup/ErrorPopup";
 import { splitUserSub } from "../../helpers/stringHelpers";
+import { getAllUserRecipeBoxes } from "../../api/recipeBox";
+import { getAllUserRecipes } from "../../api/recipe";
 
 function RecipeBoxPage() {
   const { user } = useAuth0();
@@ -21,12 +22,7 @@ function RecipeBoxPage() {
   useEffect(() => {
     const getRecipes = async () => {
       try {
-        const response = (
-          await axios.get(
-            `${process.env.REACT_APP_API_ADDRESS}/user/${userSub}/recipe`
-          )
-        ).data;
-
+        const response = await getAllUserRecipes(userSub);
         const recipesPerBoxObject = {};
         for (const recipe in response) {
           if (
@@ -49,10 +45,8 @@ function RecipeBoxPage() {
     };
     const getRecipeBoxes = async () => {
       try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_API_ADDRESS}/user/${userSub}/recipe-box`
-        );
-        setRecipeBoxes(response.data);
+        const response = await getAllUserRecipeBoxes(userSub);
+        setRecipeBoxes(response);
       } catch (error) {
         setShowError(true);
         setErrorMessage(error.response.data);
