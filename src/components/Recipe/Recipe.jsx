@@ -1,12 +1,12 @@
 import "./Recipe.scss";
 import React, { useEffect, useState } from "react";
 import Emoji from "../Emoji/Emoji";
-import axios from "axios";
 import { FoodEmoji, SymbolEmoji } from "../../enums/Emojis";
 import { adjustBrightness } from "../../helpers/colorHelpers";
 import ActionsBar from "../ActionsBar/ActionsBar";
 import RecipeForm from "../RecipeForm/RecipeForm";
 import ErrorPopup from "../ErrorPopup/ErrorPopup";
+import { removeRecipe } from "../../api/recipe";
 
 function Recipe(props) {
   const [darkerColor, setDarkerColor] = useState("#fff");
@@ -21,11 +21,7 @@ function Recipe(props) {
 
   const deleteRecipe = async () => {
     try {
-      const response = await axios.delete(
-        `${process.env.REACT_APP_API_ADDRESS}/recipe/${props.recipeId}`
-      );
-      console.log(response);
-      console.log("Deleting a recipe...");
+      await removeRecipe(props.recipeId);
       window.location.reload();
     } catch (error) {
       setShowError(true);

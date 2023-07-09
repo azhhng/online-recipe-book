@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./RecipeForm.scss";
 import ErrorPopup from "../ErrorPopup/ErrorPopup";
 import { splitUserSub } from "../../helpers/stringHelpers";
+import { addRecipe, editRecipe } from "../../api/recipe";
+import { getAllUserRecipeBoxes } from "../../api/recipeBox";
 
 function RecipeForm(props) {
   const { user } = useAuth0();
@@ -23,19 +24,14 @@ function RecipeForm(props) {
 
   const createRecipe = async () => {
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_API_ADDRESS}/user/${userSub}/recipe`,
-        {
-          name,
-          link,
-          description,
-          has_made: hasMade,
-          favorite,
-          recipe_box_id: recipeBoxId,
-        }
-      );
-      console.log("Creating a recipe...");
-      console.log(response);
+      await addRecipe(userSub, {
+        name,
+        link,
+        description,
+        has_made: hasMade,
+        favorite,
+        recipe_box_id: recipeBoxId,
+      });
       window.location.reload();
     } catch (error) {
       setShowError(true);
@@ -45,20 +41,15 @@ function RecipeForm(props) {
 
   const updateRecipe = async () => {
     try {
-      const response = await axios.put(
-        `${process.env.REACT_APP_API_ADDRESS}/recipe/${props.recipeId}`,
-        {
-          description,
-          name,
-          link,
-          recipe_box_id: recipeBoxId,
-          favorite,
-          has_made: hasMade,
-        }
-      );
+      await editRecipe(props.recipeId, {
+        description,
+        name,
+        link,
+        recipe_box_id: recipeBoxId,
+        favorite,
+        has_made: hasMade,
+      });
       props.setEditingRecipe(false);
-      console.log("Updating a recipe...");
-      console.log(response);
       window.location.reload();
     } catch (error) {
       setShowError(true);
@@ -70,11 +61,7 @@ function RecipeForm(props) {
     // TODO have the actual recipe box set not just the first one
     const getRecipeBoxes = async () => {
       try {
-        const recipeBoxes = (
-          await axios.get(
-            `${process.env.REACT_APP_API_ADDRESS}/user/${userSub}/recipe-box`
-          )
-        ).data;
+        const recipeBoxes = await getAllUserRecipeBoxes(userSub);
         if (props.action === "create" && recipeBoxes.length !== 0) {
           setRecipeBoxId(recipeBoxes[0].recipe_box_id);
         }
