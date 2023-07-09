@@ -8,6 +8,7 @@ import RecipePage from "./pages/RecipePage/RecipePage";
 import RecipeBoxPage from "./pages/RecipeBoxPage/RecipeBoxPage";
 import ExplorePage from "./pages/ExplorePage/ExplorePage";
 import OnboardingPage from "./pages/OnboardingPage/OnboardingPage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
       <div>
         <Routes>
           <Route path="/" element={<WelcomePage />} />
-          <Route path="/onboarding" element={<OnboardingPage />} />
+          <Route path="onboarding" element={<OnboardingPage />} />
           <Route path="explore" element={<ExplorePage />} />
           <Route path="profile/:user" element={<ProfilePage />} />
           <Route path="profile/:user/recipes" element={<RecipePage />} />
@@ -24,6 +25,7 @@ function App() {
             path="profile/:user/recipe-boxes"
             element={<RecipeBoxPage />}
           />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
     </Router>
