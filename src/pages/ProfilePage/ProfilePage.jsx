@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./ProfilePage.scss";
-import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 import UserForm from "../../components/UserForm/UserForm";
 import PageTitleBar from "../../components/PageTitleBar/PageTitleBar";
 import { FoodEmoji } from "../../enums/Emojis";
 import ErrorPopup from "../../components/ErrorPopup/ErrorPopup";
 import { splitUserSub, splitPathSub } from "../../helpers/stringHelpers";
+import { removeUser, retrieveUser } from "../../api/user";
 
 // TODO fix calling API with user?.sub and base it off the url instead
 // TODO fix alignment of editing profile form
@@ -27,11 +27,7 @@ function ProfilePage() {
 
   const deleteUser = async () => {
     try {
-      const response = await axios.delete(
-        `${process.env.REACT_APP_API_ADDRESS}/user/${user?.sub}`
-      );
-      console.log(response);
-      console.log("Deleting a user...");
+      await removeUser(user?.sub);
       logout({ logoutParams: { returnTo: window.location.origin } });
     } catch (error) {
       setShowError(true);
@@ -42,10 +38,7 @@ function ProfilePage() {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const response = await axios.get(
-          `${process.env.REACT_APP_API_ADDRESS}/user/${currentProfileSub}`
-        );
-        console.log("Getting user information...");
+        const response = await retrieveUser(currentProfileSub);
         if (response.data.length === 0) {
           navigate("/onboarding", { state: { from: "profile" } });
         }

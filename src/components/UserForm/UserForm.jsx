@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "./UserForm.scss";
 import EmojiPicker from "../EmojiPicker/EmojiPicker";
-import axios from "axios";
 import { FoodEmoji } from "../../enums/Emojis";
 import Emoji from "../Emoji/Emoji";
 import ErrorPopup from "../ErrorPopup/ErrorPopup";
 import { useNavigate } from "react-router-dom";
+import { addUser, editUser } from "../../api/user";
 
 function UserForm(props) {
   const navigate = useNavigate();
@@ -21,16 +21,11 @@ function UserForm(props) {
 
   const createUser = async () => {
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_API_ADDRESS}/user/${props.userId}`,
-        {
-          name,
-          color,
-          emoji,
-        }
-      );
-      console.log("Creating user...");
-      console.log(response);
+      await addUser(props.userId, {
+        name,
+        color,
+        emoji,
+      });
       navigate(`/profile/${props.userId}`);
     } catch (error) {
       setShowError(true);
@@ -40,16 +35,11 @@ function UserForm(props) {
 
   const updateUser = async () => {
     try {
-      const response = await axios.put(
-        `${process.env.REACT_APP_API_ADDRESS}/user/${props.userId}`,
-        {
-          name,
-          color,
-          emoji,
-        }
-      );
-      console.log("Updating user...");
-      console.log(response);
+      await editUser(props.userId, {
+        name,
+        color,
+        emoji,
+      });
       props.setIsUserFormOpen(false);
       window.location.reload();
     } catch (error) {
