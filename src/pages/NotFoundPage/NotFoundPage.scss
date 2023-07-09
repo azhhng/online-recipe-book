@@ -1,0 +1,31 @@
+@import "../../assets/sass/colors.scss";
+
+/* ===== NotFoundPage SCSS ===== */
+
+.not-found-page-container {
+  border-radius: 15px;
+  padding: 10px 40px;
+}
+
+.not-found-page-container > h2 > a {
+  background-color: #b0e1bb;
+  border: 2px solid #6bc781;
+  color: #000000;
+  border-radius: 7px;
+  margin-left: 10px;
+}
+
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $red;
+  background-color: $light-red;
+  border: 2px solid $red;
+  width: 300px;
+  border-radius: 15px;
+}
+
+.not-found-page-container > .error-container > img {
+  margin-left: 10px;
+}
