@@ -9,6 +9,7 @@ import RecipeBoxPage from "./pages/RecipeBoxPage/RecipeBoxPage";
 import ExplorePage from "./pages/ExplorePage/ExplorePage";
 import OnboardingPage from "./pages/OnboardingPage/OnboardingPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
+      <Footer />
     </Router>
   );
 }
