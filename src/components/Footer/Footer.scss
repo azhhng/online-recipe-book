@@ -1,0 +1,19 @@
+@import "../../assets/sass/colors.scss";
+
+/* ===== Footer SCSS ===== */
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: fixed;
+  bottom: 30px;
+  width: 98%;
+  color: $dark-blue;
+}
+
+.footer > a {
+  text-decoration: underline;
+  padding: 0px 10px;
+  color: #eaaf31;
+}
