@@ -79,6 +79,7 @@ export const FoodEmoji = Object.freeze({
 export const SymbolEmoji = Object.freeze({
   BOX: "card_file_box",
   FIRE: "fire",
+  HIBISCUS: "hibiscus",
   LEFT_ARROW: "left_arrow",
   LEFT_ARROW_DISABLED: "left_arrow_disabled",
   LINK: "link",
