@@ -7,14 +7,8 @@
   margin-right: auto;
   width: 80%;
 }
-
-.guide-container {
-  float: left;
-  margin-top: 10%;
-  padding: 20px 50px;
-  background-color: $light-blue;
-  border: 2px solid $dark-blue;
-  border-radius: 15px;
+.welcome-container > .guide-container {
+  margin-bottom: 4%;
 }
 
 .welcome-container > .guide-container > h1 {
@@ -24,29 +18,28 @@
 
 .welcome-container > .guide-container > ul {
   padding: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }
 
 .welcome-container > .guide-container > ul > li {
-  list-style-type: none;
-  font-family: "Trebuchet MS";
-  color: $dark-blue;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 20px;
-  padding: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  color: $dark-blue;
+  font-size: 20px;
   cursor: default;
+  background-color: $light-yellow;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 2px solid $deep-yellow;
 }
 
 .welcome-container > .guide-container > ul > li > img {
-  margin: auto 15px;
+  margin: auto 15px auto 0px;
 }
 
 .sidebar-container {
-  margin-top: 10%;
   min-width: 600px;
-  float: left;
-  left: 5%;
 }

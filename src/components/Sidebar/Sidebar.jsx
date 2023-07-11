@@ -13,8 +13,7 @@ function Sidebar() {
         </h1>
       </div>
 
-      <h2>Your collection of online recipes...</h2>
-      <h2>The modern recipe box!</h2>
+      <h2>Your collection of online recipes... The modern recipe box!</h2>
     </div>
   );
 }
