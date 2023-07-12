@@ -1,12 +1,9 @@
 /* ===== EmojiBubble SCSS ===== */
 
 .emoji-bubble {
-  position: fixed;
-  width: 60px;
-  height: 59px;
+  position: absolute;
   border-radius: 50%;
   transition: 0.3s;
-  z-index: -2;
   cursor: pointer;
 }
 
