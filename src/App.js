@@ -4,12 +4,12 @@ import React from "react";
 import WelcomePage from "./pages/WelcomePage/WelcomePage";
 import Header from "./components/Header/Header";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
-import RecipePage from "./pages/RecipePage/RecipePage";
-import RecipeBoxPage from "./pages/RecipeBoxPage/RecipeBoxPage";
 import ExplorePage from "./pages/ExplorePage/ExplorePage";
 import OnboardingPage from "./pages/OnboardingPage/OnboardingPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import Footer from "./components/Footer/Footer";
+import UserRecipeBoxesPage from "./pages/UserRecipeBoxesPage/UserRecipeBoxesPage";
+import UserRecipePage from "./pages/UserRecipePage/UserRecipePage";
 
 function App() {
   return (
@@ -21,10 +21,10 @@ function App() {
           <Route path="onboarding" element={<OnboardingPage />} />
           <Route path="explore" element={<ExplorePage />} />
           <Route path="profile/:user" element={<ProfilePage />} />
-          <Route path="profile/:user/recipes" element={<RecipePage />} />
+          <Route path="profile/:user/recipes" element={<UserRecipePage />} />
           <Route
             path="profile/:user/recipe-boxes"
-            element={<RecipeBoxPage />}
+            element={<UserRecipeBoxesPage />}
           />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
