@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./RecipePage.scss";
+import "./UserRecipePage.scss";
 import Recipe from "../../components/Recipe/Recipe";
 import { useAuth0 } from "@auth0/auth0-react";
 import RecipeForm from "../../components/RecipeForm/RecipeForm";
@@ -10,7 +10,7 @@ import { splitUserSub } from "../../helpers/stringHelpers";
 import { getAllUserRecipeBoxes } from "../../api/recipeBox";
 import { getAllUserRecipes } from "../../api/recipe";
 
-function RecipePage() {
+function UserRecipePage() {
   const { user } = useAuth0();
   const userSub = splitUserSub(user?.sub);
   const [recipes, setRecipes] = useState([]);
@@ -108,4 +108,4 @@ function RecipePage() {
   );
 }
 
-export default RecipePage;
+export default UserRecipePage;
