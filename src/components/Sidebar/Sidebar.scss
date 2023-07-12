@@ -7,6 +7,10 @@
   margin-bottom: 5%;
 }
 
+.sidebar-container > .title-container {
+  position: relative;
+}
+
 .sidebar-container > .title-container > h1 {
   font-size: 70px;
   color: $vibrant-blue;
