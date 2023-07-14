@@ -10,6 +10,7 @@ import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import Footer from "./components/Footer/Footer";
 import UserRecipeBoxesPage from "./pages/UserRecipeBoxesPage/UserRecipeBoxesPage";
 import UserRecipePage from "./pages/UserRecipePage/UserRecipePage";
+import RecipeBoxPage from "./pages/RecipeBoxPage/RecipeBoxPage";
 
 function App() {
   return (
@@ -22,6 +23,10 @@ function App() {
           <Route path="explore" element={<ExplorePage />} />
           <Route path="profile/:user" element={<ProfilePage />} />
           <Route path="profile/:user/recipes" element={<UserRecipePage />} />
+          <Route
+            path="profile/:user/recipe-boxes/:id"
+            element={<RecipeBoxPage />}
+          />
           <Route
             path="profile/:user/recipe-boxes"
             element={<UserRecipeBoxesPage />}
