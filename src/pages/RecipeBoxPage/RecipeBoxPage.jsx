@@ -14,6 +14,7 @@ function RecipeBoxPage() {
   const location = useLocation();
   const { user } = useAuth0();
   const userSub = splitUserSub(user?.sub);
+  const [sameUser, setSameUser] = useState(false);
   const [recipes, setRecipes] = useState([]);
   const [recipeBox, setRecipeBox] = useState({});
   // error handling
@@ -26,13 +27,16 @@ function RecipeBoxPage() {
       try {
         const response = await retrieveRecipeBox(recipeBoxId);
         setRecipeBox(response.data[0]);
+        if (response.data[0].user_id === userSub) {
+          setSameUser(true);
+        }
       } catch (error) {
         setShowError(true);
         setErrorMessage(error.response.data);
       }
     };
     getRecipeBox();
-  }, [recipeBoxId]);
+  }, [recipeBoxId, userSub]);
 
   useEffect(() => {
     const getRecipes = async () => {
@@ -50,7 +54,7 @@ function RecipeBoxPage() {
   return (
     <div>
       <PageTitleBar
-        title={recipeBox.name}
+        title={"Recipe box | " + recipeBox.name}
         emojiType={"food"}
         emoji={recipeBox.emoji ?? FoodEmoji.BANANA}
         color="#8fa2e3"
@@ -71,7 +75,7 @@ function RecipeBoxPage() {
             favorite={recipe.favorite}
           />
         ))}
-        {userSub === recipeBox.user_id && <RecipeForm action={"create"} />}
+        {sameUser && <RecipeForm action={"create"} />}
       </div>
     </div>
   );
