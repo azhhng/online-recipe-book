@@ -16,11 +16,15 @@
 }
 
 .recipe-box > .recipe-box-name {
-  color: $vibrant-blue;
   text-align: center;
   min-width: 250px;
   font-size: 20px;
   padding: 60px 0px 0px 0px;
+}
+
+.recipe-box > .recipe-box-name > a {
+  color: $vibrant-blue;
+  border: 2px solid $dark-blue;
 }
 
 .recipe-box > img {

@@ -1,5 +1,6 @@
 import "./RecipeBox.scss";
 import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import RecipeForm from "../RecipeForm/RecipeForm";
 import RecipeBoxForm from "../RecipeBoxForm/RecipeBoxForm";
 import Emoji from "../Emoji/Emoji";
@@ -16,6 +17,13 @@ function RecipeBox(props) {
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
+  const location = useLocation();
+  const pageLink =
+    "/profile/" +
+    location.pathname.split("/")[2] +
+    "/recipe-boxes/" +
+    props.box.recipe_box_id;
+
   const deleteRecipeBox = async () => {
     // TODO create box that alerts users that all recipes are going to be deleted as well
     try {
@@ -27,7 +35,7 @@ function RecipeBox(props) {
     }
   };
 
-  // TODO fix tool tip
+  // TODO add tool tip
   return (
     <div className="recipe-box">
       {showError && (
@@ -49,7 +57,9 @@ function RecipeBox(props) {
         setEditing={setEditingRecipeBox}
         delete={deleteRecipeBox}
       />
-      <h4 className="recipe-box-name">{props.box.name}</h4>
+      <h4 className="recipe-box-name">
+        <Link to={pageLink}>{props.box.name}</Link>
+      </h4>
       <h4>{props.box.description}</h4>
       <h3># Recipes: {props.recipes.length}</h3>
       {addingRecipeToBox && (
