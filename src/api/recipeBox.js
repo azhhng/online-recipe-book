@@ -9,6 +9,15 @@ export const removeRecipeBox = async (recipeBoxId) => {
   return response;
 };
 
+export const retrieveRecipeBox = async (recipeBoxId) => {
+  const response = await axios.get(
+    `${process.env.REACT_APP_API_ADDRESS}/recipe-box/${recipeBoxId}`
+  );
+  console.log(response);
+  console.log("Getting a recipe box...");
+  return response;
+};
+
 export const addRecipeBox = async (userSub, boxBody) => {
   const response = await axios.post(
     `${process.env.REACT_APP_API_ADDRESS}/user/${userSub}/recipe-box`,
@@ -37,4 +46,14 @@ export const getAllUserRecipeBoxes = async (userSub) => {
   ).data;
   console.log("Getting all of user's recipe boxes...");
   return recipeBoxes;
+};
+
+export const getRecipeBoxRecipes = async (recipeBoxId) => {
+  const recipes = (
+    await axios.get(
+      `${process.env.REACT_APP_API_ADDRESS}/recipe-box/${recipeBoxId}/recipes`
+    )
+  ).data;
+  console.log("Getting all of the recipes for a recipe box...");
+  return recipes;
 };
