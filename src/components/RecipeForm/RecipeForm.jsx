@@ -34,7 +34,9 @@ function RecipeForm(props) {
         favorite,
         recipe_box_id: recipeBoxId,
       });
-      window.location.reload();
+      if (props.action === "create") {
+        window.location.reload();
+      }
     } catch (error) {
       setShowError(true);
       setErrorMessage(error.response.data);
