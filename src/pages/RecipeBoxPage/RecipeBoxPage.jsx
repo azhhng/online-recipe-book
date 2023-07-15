@@ -17,6 +17,7 @@ function RecipeBoxPage() {
   const [sameUser, setSameUser] = useState(false);
   const [recipes, setRecipes] = useState([]);
   const [recipeBox, setRecipeBox] = useState({});
+  const [addingRecipeToBox, setAddingRecipeToBox] = useState(false);
   // error handling
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -62,6 +63,11 @@ function RecipeBoxPage() {
       {showError && (
         <ErrorPopup message={errorMessage} setShowError={setShowError} />
       )}
+      <div className="recipe-action-bar">
+        <button id="action-button" onClick={() => setAddingRecipeToBox(true)}>
+          Add recipe
+        </button>
+      </div>
       <div className="recipe-group-container">
         {Object.keys(recipeBox).length !== 0 &&
           recipes.map((recipe) => (
@@ -77,7 +83,12 @@ function RecipeBoxPage() {
               sameUser={sameUser}
             />
           ))}
-        {sameUser && <RecipeForm action={"create"} />}
+        {sameUser && addingRecipeToBox && (
+          <RecipeForm
+            action={"create"}
+            setAddingRecipeToBox={setAddingRecipeToBox}
+          />
+        )}
       </div>
     </div>
   );
