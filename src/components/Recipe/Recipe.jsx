@@ -52,8 +52,10 @@ function Recipe(props) {
           delete={deleteRecipe}
         />
       )}
-      <h3 id="recipe-name">{props.name}</h3>
-      <h4 id="recipe-description">{props.description}</h4>
+      <div className="text-container">
+        <h3>{props.name}</h3>
+        <h4 id="recipe-description">{props.description}</h4>
+      </div>
       <div className="recipe-box-tag">
         <Emoji
           type={"food"}
