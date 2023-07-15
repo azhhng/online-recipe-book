@@ -15,6 +15,7 @@ function UserRecipePage() {
   const userSub = splitUserSub(user?.sub);
   const [recipes, setRecipes] = useState([]);
   const [recipeBoxes, setRecipeBoxes] = useState({});
+  const [addingRecipeToBox, setAddingRecipeToBox] = useState(false);
   // error handling
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -89,6 +90,12 @@ function UserRecipePage() {
         emoji={SymbolEmoji.SCROLL}
         color="#8fa2e3"
       />
+
+      <div className="recipe-action-bar">
+        <button onClick={() => setAddingRecipeToBox(true)}>
+          Create Recipe
+        </button>
+      </div>
       <div className="recipe-group-container">
         {recipes.map((recipe) => (
           <Recipe
@@ -100,9 +107,15 @@ function UserRecipePage() {
             description={recipe.description ?? ""}
             hasMade={recipe.has_made}
             favorite={recipe.favorite}
+            sameUser={true}
           />
         ))}
-        <RecipeForm action={"create"} />
+        {addingRecipeToBox && (
+          <RecipeForm
+            action={"create"}
+            setAddingRecipeToBox={setAddingRecipeToBox}
+          />
+        )}
       </div>
     </div>
   );

@@ -1,7 +1,29 @@
+@import "../../assets/sass/colors.scss";
+
 /* ===== UserRecipePage SCSS ===== */
 
 .recipe-group-container {
   margin-left: auto;
   margin-right: auto;
   width: 95%;
+}
+
+.recipe-action-bar {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+}
+
+.recipe-action-bar > button {
+  padding: 10px 15px;
+  border-radius: 10px;
+  margin-right: 10px;
+  border: 2px solid $blue;
+  color: $blue;
+}
+
+.recipe-action-bar > button:hover {
+  border: 2px solid $vibrant-blue;
+  color: $vibrant-blue;
 }
