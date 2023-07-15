@@ -148,6 +148,14 @@ function RecipeForm(props) {
           Cancel
         </button>
       )}
+      {props.action === "create" && (
+        <button
+          id="form-button"
+          onClick={() => props.setAddingRecipeToBox(false)}
+        >
+          Cancel
+        </button>
+      )}
       {props.action === "edit" && (
         <button id="form-button" onClick={() => updateRecipe()}>
           Update
