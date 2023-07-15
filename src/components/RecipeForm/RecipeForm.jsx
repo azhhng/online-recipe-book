@@ -15,7 +15,9 @@ function RecipeForm(props) {
   const [hasMade, setHasMade] = useState(props?.hasMade ?? false);
   const [favorite, setFavorite] = useState(props?.favorite ?? false);
   const [recipeBoxId, setRecipeBoxId] = useState(
-    props?.box?.recipe_box_id ?? props?.recipeBox?.recipe_box_id ?? ""
+    props?.action === "addToOwnBox"
+      ? ""
+      : props?.box?.recipe_box_id ?? props?.recipeBox?.recipe_box_id ?? ""
   );
   const [boxOptions, setBoxOptions] = useState([]);
   // error handling
@@ -62,7 +64,10 @@ function RecipeForm(props) {
     const getRecipeBoxes = async () => {
       try {
         const recipeBoxes = await getAllUserRecipeBoxes(userSub);
-        if (props.action === "create" && recipeBoxes.length !== 0) {
+        if (
+          (props.action === "create" || props.action === "addToOwnBox") &&
+          recipeBoxes.length !== 0
+        ) {
           setRecipeBoxId(recipeBoxes[0].recipe_box_id);
         }
         const options = recipeBoxes.map((recipeBox) => {
@@ -156,12 +161,22 @@ function RecipeForm(props) {
           Cancel
         </button>
       )}
+      {props.action === "addToOwnBox" && (
+        <button id="form-button" onClick={() => props.setAddingToOwnBox(false)}>
+          Cancel
+        </button>
+      )}
       {props.action === "edit" && (
         <button id="form-button" onClick={() => updateRecipe()}>
           Update
         </button>
       )}
       {props.action === "create" && (
+        <button id="form-button" onClick={() => createRecipe()}>
+          Add
+        </button>
+      )}
+      {props.action === "addToOwnBox" && (
         <button id="form-button" onClick={() => createRecipe()}>
           Add
         </button>

@@ -74,6 +74,7 @@ function RecipeBoxPage() {
               description={recipe.description ?? ""}
               hasMade={recipe.has_made}
               favorite={recipe.favorite}
+              sameUser={sameUser}
             />
           ))}
         {sameUser && <RecipeForm action={"create"} />}

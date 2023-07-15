@@ -15,6 +15,7 @@ function Recipe(props) {
   const [sameUser, setSameUser] = useState(false);
   const [darkerColor, setDarkerColor] = useState("#fff");
   const [editingRecipe, setEditingRecipe] = useState(false);
+  const [addingToOwnBox, setAddingToOwnBox] = useState(false);
   // error handling
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -40,16 +41,31 @@ function Recipe(props) {
     }
   };
 
+  const checkIfCanAddToOwnBox = () => {
+    if (!user) {
+      setShowError(true);
+      setErrorMessage("Please log in to add this recipe!");
+      return;
+    }
+    setAddingToOwnBox(true);
+  };
+
   return (
     <div className="recipe-container">
       {showError && (
         <ErrorPopup message={errorMessage} setShowError={setShowError} />
       )}
-      {sameUser && (
+      {sameUser ? (
         <ActionsBar
           source={"Recipe"}
           setEditing={setEditingRecipe}
           delete={deleteRecipe}
+        />
+      ) : (
+        <ActionsBar
+          source={"externalRecipeBox"}
+          setAddingToOwnBox={setAddingToOwnBox}
+          checkIfCanAddToOwnBox={checkIfCanAddToOwnBox}
         />
       )}
       <div className="text-container">
@@ -107,6 +123,19 @@ function Recipe(props) {
           link={props.link}
           box={props.box}
           setEditingRecipe={setEditingRecipe}
+        />
+      )}
+      {addingToOwnBox && (
+        <RecipeForm
+          action={"addToOwnBox"}
+          recipeId={props.recipeId}
+          name={props.name}
+          favorite={false}
+          hasMade={false}
+          description={""}
+          link={props.link}
+          box={props.box}
+          setAddingToOwnBox={setAddingToOwnBox}
         />
       )}
     </div>
