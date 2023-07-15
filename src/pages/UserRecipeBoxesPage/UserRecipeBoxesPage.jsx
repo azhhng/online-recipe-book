@@ -15,6 +15,7 @@ function UserRecipeBoxesPage() {
   const userSub = splitUserSub(user?.sub);
   const [recipeBoxes, setRecipeBoxes] = useState([]);
   const [recipesPerBox, setRecipesPerBox] = useState({});
+  const [creatingRecipeBox, setCreatingRecipeBox] = useState(false);
   // error handling
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -69,6 +70,11 @@ function UserRecipeBoxesPage() {
         emoji={SymbolEmoji.PACKAGE}
         color="#8fa2e3"
       />
+      <div className="recipe-action-bar">
+        <button id="action-button" onClick={() => setCreatingRecipeBox(true)}>
+          Add Recipe Box
+        </button>
+      </div>
       <div className="recipe-box-group-container">
         {recipeBoxes.map((recipeBox) => (
           <RecipeBox
@@ -77,7 +83,12 @@ function UserRecipeBoxesPage() {
             recipes={recipesPerBox[recipeBox.recipe_box_id] ?? []}
           />
         ))}
-        <RecipeBoxForm action={"create"} />
+        {creatingRecipeBox && (
+          <RecipeBoxForm
+            action={"create"}
+            setCreatingRecipeBox={setCreatingRecipeBox}
+          />
+        )}
       </div>
     </div>
   );
