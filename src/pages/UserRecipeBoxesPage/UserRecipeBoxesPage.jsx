@@ -72,7 +72,7 @@ function UserRecipeBoxesPage() {
       />
       <div className="recipe-action-bar">
         <button id="action-button" onClick={() => setCreatingRecipeBox(true)}>
-          Add Recipe Box
+          Add recipe box
         </button>
       </div>
       <div className="recipe-box-group-container">
