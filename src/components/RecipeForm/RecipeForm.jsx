@@ -91,6 +91,16 @@ function RecipeForm(props) {
     getRecipeBoxes();
   }, [userSub, props.action]);
 
+  const closeForm = () => {
+    if (props.action === "create") {
+      props.setAddingRecipeToBox(false);
+    } else if (props.action === "edit") {
+      props.setEditingRecipe(false);
+    } else if (props.action === "addToOwnBox") {
+      props.setAddingToOwnBox(false);
+    }
+  };
+
   return (
     <div
       className="recipe-form-container"
@@ -150,24 +160,9 @@ function RecipeForm(props) {
         ></input>
         <label htmlFor="recipe-favorite">Favorite</label>
       </form>
-      {props.action === "edit" && (
-        <button id="form-button" onClick={() => props.setEditingRecipe(false)}>
-          Cancel
-        </button>
-      )}
-      {props.action === "create" && (
-        <button
-          id="form-button"
-          onClick={() => props.setAddingRecipeToBox(false)}
-        >
-          Cancel
-        </button>
-      )}
-      {props.action === "addToOwnBox" && (
-        <button id="form-button" onClick={() => props.setAddingToOwnBox(false)}>
-          Cancel
-        </button>
-      )}
+      <button id="form-button" onClick={() => closeForm()}>
+        Cancel
+      </button>
       {props.action === "edit" && (
         <button id="form-button" onClick={() => updateRecipe()}>
           Update
