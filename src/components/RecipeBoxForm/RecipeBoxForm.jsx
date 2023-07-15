@@ -25,6 +25,7 @@ function RecipeBoxForm(props) {
   const createRecipeBox = async () => {
     try {
       await addRecipeBox(userSub, { name, description, emoji, color });
+      props.setCreatingRecipeBox(false);
       window.location.reload();
     } catch (error) {
       setShowError(true);

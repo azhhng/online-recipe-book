@@ -35,7 +35,10 @@ function RecipeForm(props) {
         recipe_box_id: recipeBoxId,
       });
       if (props.action === "create") {
+        props.setAddingRecipeToBox(false);
         window.location.reload();
+      } else if (props.action === "addToOwnBox") {
+        props.setAddingToOwnBox(false);
       }
     } catch (error) {
       setShowError(true);
