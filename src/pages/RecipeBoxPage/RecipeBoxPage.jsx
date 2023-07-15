@@ -54,7 +54,7 @@ function RecipeBoxPage() {
   return (
     <div>
       <PageTitleBar
-        title={"Recipe box | " + recipeBox?.name}
+        title={"Recipe box | " + (recipeBox?.name ?? "")}
         emojiType={"food"}
         emoji={recipeBox?.emoji ?? FoodEmoji.BANANA}
         color="#8fa2e3"
