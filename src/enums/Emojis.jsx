@@ -20,6 +20,7 @@ export const FoodEmoji = Object.freeze({
   CLINKING_GLASSES: "clinking_glasses",
   COCKTAIL_GLASS: "cocktail_glass",
   COCONUT: "coconut",
+  COOKED_RICE: "cooked_rice",
   COOKING: "cooking",
   CORN: "ear_of_corn",
   CROISSANT: "croissant",
