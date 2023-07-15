@@ -15,12 +15,13 @@
   box-shadow: 2px 2px 0px 2px $deepest-yellow;
   word-wrap: break-word;
   background-color: $light-yellow;
+  display: flex;
+  flex-direction: column;
 }
 
 .recipe-container > #recipe-name {
-  position: absolute;
-  right: 80px;
-  bottom: 290px;
+  display: flex;
+  justify-content: center;
 }
 
 .recipe-container > #recipe-description {
