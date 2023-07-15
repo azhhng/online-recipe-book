@@ -17,6 +17,7 @@ function Sidebar() {
           emoji={FoodEmoji.LEAFY_GREEN}
           style={{
             backgroundColor: "#d8f0df",
+            position: "absolute",
             border: `3px solid ${adjustBrightness("#d8f0df", -40)}`,
             bottom: "140px",
             left: "100px",
@@ -28,6 +29,7 @@ function Sidebar() {
           emoji={FoodEmoji.GREEN_SALAD}
           style={{
             backgroundColor: "#d4fadf",
+            position: "absolute",
             border: `3px solid ${adjustBrightness("#d4fadf", -40)}`,
             bottom: "130px",
             left: "150px",
@@ -40,6 +42,7 @@ function Sidebar() {
           emoji={FoodEmoji.GRAPES}
           style={{
             backgroundColor: "#f5e6ff",
+            position: "absolute",
             border: `3px solid ${adjustBrightness("#f5e6ff", -40)}`,
             bottom: "110px",
             left: "400px",
@@ -52,6 +55,7 @@ function Sidebar() {
           emoji={FoodEmoji.SPAGHETTI}
           style={{
             backgroundColor: "#ffe2e0",
+            position: "absolute",
             border: `3px solid ${adjustBrightness("#ffe2e0", -40)}`,
             bottom: "10px",
             left: "580px",
@@ -64,6 +68,7 @@ function Sidebar() {
           emoji={FoodEmoji.TOMATO}
           style={{
             backgroundColor: "#ffe2e0",
+            position: "absolute",
             border: `3px solid ${adjustBrightness("#ffe2e0", -40)}`,
             bottom: "0px",
             left: "540px",
