@@ -63,18 +63,19 @@ function RecipeBoxPage() {
         <ErrorPopup message={errorMessage} setShowError={setShowError} />
       )}
       <div className="recipe-group-container">
-        {recipes.map((recipe) => (
-          <Recipe
-            key={recipe.recipe_id}
-            recipeId={recipe.recipe_id}
-            box={recipeBox}
-            name={recipe.name}
-            link={recipe.link}
-            description={recipe.description ?? ""}
-            hasMade={recipe.has_made}
-            favorite={recipe.favorite}
-          />
-        ))}
+        {Object.keys(recipeBox).length !== 0 &&
+          recipes.map((recipe) => (
+            <Recipe
+              key={recipe.recipe_id}
+              recipeId={recipe.recipe_id}
+              box={recipeBox}
+              name={recipe.name}
+              link={recipe.link}
+              description={recipe.description ?? ""}
+              hasMade={recipe.has_made}
+              favorite={recipe.favorite}
+            />
+          ))}
         {sameUser && <RecipeForm action={"create"} />}
       </div>
     </div>
