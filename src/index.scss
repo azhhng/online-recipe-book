@@ -51,6 +51,19 @@ a {
   border-radius: 5px;
 }
 
+#action-button {
+  padding: 10px 15px;
+  border-radius: 10px;
+  margin-right: 10px;
+  border: 2px solid $blue;
+  color: $blue;
+}
+
+#action-button:hover {
+  border: 2px solid $vibrant-blue;
+  color: $vibrant-blue;
+}
+
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   font-family: "Source Code Pro", monospace;

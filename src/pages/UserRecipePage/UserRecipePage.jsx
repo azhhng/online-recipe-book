@@ -92,8 +92,8 @@ function UserRecipePage() {
       />
 
       <div className="recipe-action-bar">
-        <button onClick={() => setAddingRecipeToBox(true)}>
-          Create Recipe
+        <button id="action-button" onClick={() => setAddingRecipeToBox(true)}>
+          Add Recipe
         </button>
       </div>
       <div className="recipe-group-container">

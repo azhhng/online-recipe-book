@@ -66,12 +66,14 @@ function ProfilePage() {
           color="#8fa2e3"
         />
       </div>
-      <button id="form-button" onClick={() => deleteUser()}>
-        Delete account
-      </button>
-      <button id="form-button" onClick={() => setIsUserFormOpen(true)}>
-        Edit settings
-      </button>
+      <div className="profile-action-bar">
+        <button id="action-button" onClick={() => deleteUser()}>
+          Delete account
+        </button>
+        <button id="action-button" onClick={() => setIsUserFormOpen(true)}>
+          Edit settings
+        </button>
+      </div>
       {isUserFormOpen && (
         <UserForm
           user={appUser}
