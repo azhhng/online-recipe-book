@@ -1,6 +1,5 @@
 import "./Recipe.scss";
 import React, { useEffect, useState } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
 import Emoji from "../Emoji/Emoji";
 import { FoodEmoji, SymbolEmoji } from "../../enums/Emojis";
 import { adjustBrightness } from "../../helpers/colorHelpers";
@@ -8,10 +7,11 @@ import ActionsBar from "../ActionsBar/ActionsBar";
 import RecipeForm from "../RecipeForm/RecipeForm";
 import ErrorPopup from "../ErrorPopup/ErrorPopup";
 import { removeRecipe } from "../../api/recipe";
-import { splitUserSub } from "../../helpers/stringHelpers";
+import { userStore } from "../../stores/user";
 
 function Recipe(props) {
-  const { user } = useAuth0();
+  const userSub = userStore((state) => state.sub);
+
   const [sameUser, setSameUser] = useState(false);
   const [darkerColor, setDarkerColor] = useState("#fff");
   const [editingRecipe, setEditingRecipe] = useState(false);
@@ -25,11 +25,10 @@ function Recipe(props) {
   }, [props]);
 
   useEffect(() => {
-    const userSub = splitUserSub(user?.sub);
     if (userSub === props.box.user_id) {
       setSameUser(true);
     }
-  }, [user, props.box.user_id]);
+  }, [userSub, props.box.user_id]);
 
   const deleteRecipe = async () => {
     try {
@@ -42,7 +41,7 @@ function Recipe(props) {
   };
 
   const checkIfCanAddToOwnBox = () => {
-    if (!user) {
+    if (!userSub) {
       setShowError(true);
       setErrorMessage("Please log in to add this recipe!");
       return;

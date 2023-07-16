@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "./UserRecipePage.scss";
 import Recipe from "../../components/Recipe/Recipe";
-import { useAuth0 } from "@auth0/auth0-react";
 import RecipeForm from "../../components/RecipeForm/RecipeForm";
 import PageTitleBar from "../../components/PageTitleBar/PageTitleBar";
 import { SymbolEmoji } from "../../enums/Emojis";
 import ErrorPopup from "../../components/ErrorPopup/ErrorPopup";
-import { splitUserSub } from "../../helpers/stringHelpers";
 import { getAllUserRecipeBoxes } from "../../api/recipeBox";
 import { getAllUserRecipes } from "../../api/recipe";
+import { userStore } from "../../stores/user";
 
 function UserRecipePage() {
-  const { user } = useAuth0();
-  const userSub = splitUserSub(user?.sub);
+  const userSub = userStore((state) => state.sub);
   const [recipes, setRecipes] = useState([]);
   const [recipeBoxes, setRecipeBoxes] = useState({});
   const [addingRecipeToBox, setAddingRecipeToBox] = useState(false);
@@ -90,7 +88,6 @@ function UserRecipePage() {
         emoji={SymbolEmoji.SCROLL}
         color="#8fa2e3"
       />
-
       <div className="recipe-action-bar">
         <button id="action-button" onClick={() => setAddingRecipeToBox(true)}>
           Add recipe

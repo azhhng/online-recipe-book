@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "./UserRecipeBoxesPage.scss";
-import { useAuth0 } from "@auth0/auth0-react";
 import RecipeBox from "../../components/RecipeBox/RecipeBox";
 import RecipeBoxForm from "../../components/RecipeBoxForm/RecipeBoxForm";
 import PageTitleBar from "../../components/PageTitleBar/PageTitleBar";
 import { SymbolEmoji } from "../../enums/Emojis";
 import ErrorPopup from "../../components/ErrorPopup/ErrorPopup";
-import { splitUserSub } from "../../helpers/stringHelpers";
 import { getAllUserRecipeBoxes } from "../../api/recipeBox";
 import { getAllUserRecipes } from "../../api/recipe";
+import { userStore } from "../../stores/user";
 
 function UserRecipeBoxesPage() {
-  const { user } = useAuth0();
-  const userSub = splitUserSub(user?.sub);
+  const userSub = userStore((state) => state.sub);
+  console.log("User sub: " + userSub);
   const [recipeBoxes, setRecipeBoxes] = useState([]);
   const [recipesPerBox, setRecipesPerBox] = useState({});
   const [creatingRecipeBox, setCreatingRecipeBox] = useState(false);

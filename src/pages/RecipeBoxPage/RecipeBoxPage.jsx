@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
 import ErrorPopup from "../../components/ErrorPopup/ErrorPopup";
 import { getRecipeBoxRecipes } from "../../api/recipeBox";
 import { retrieveRecipeBox } from "../../api/recipeBox";
@@ -8,12 +7,11 @@ import Recipe from "../../components/Recipe/Recipe";
 import RecipeForm from "../../components/RecipeForm/RecipeForm";
 import PageTitleBar from "../../components/PageTitleBar/PageTitleBar";
 import { FoodEmoji } from "../../enums/Emojis";
-import { splitUserSub } from "../../helpers/stringHelpers";
+import { userStore } from "../../stores/user";
 
 function RecipeBoxPage() {
   const location = useLocation();
-  const { user } = useAuth0();
-  const userSub = splitUserSub(user?.sub);
+  const userSub = userStore((state) => state.sub);
   const [sameUser, setSameUser] = useState(false);
   const [recipes, setRecipes] = useState([]);
   const [recipeBox, setRecipeBox] = useState({});

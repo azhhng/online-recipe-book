@@ -1,16 +1,15 @@
 import React, { useState } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
 import "./RecipeBoxForm.scss";
 import EmojiPicker from "../EmojiPicker/EmojiPicker";
 import { FoodEmoji } from "../../enums/Emojis";
 import Emoji from "../Emoji/Emoji";
 import ErrorPopup from "../ErrorPopup/ErrorPopup";
-import { splitUserSub } from "../../helpers/stringHelpers";
 import { addRecipeBox, editRecipeBox } from "../../api/recipeBox";
+import { userStore } from "../../stores/user";
 
 function RecipeBoxForm(props) {
-  const { user } = useAuth0();
-  const userSub = splitUserSub(user?.sub);
+  const userSub = userStore((state) => state.sub);
+  console.log("User Sub: " + userSub);
   const [name, setName] = useState(props.box?.name ?? "");
   const [description, setDescription] = useState(props.box?.description ?? "");
   const [color, setColor] = useState(props.box?.color ?? "#8fafe3");
@@ -24,6 +23,8 @@ function RecipeBoxForm(props) {
 
   const createRecipeBox = async () => {
     try {
+      console.log("hello");
+      console.log(userSub);
       await addRecipeBox(userSub, { name, description, emoji, color });
       props.setCreatingRecipeBox(false);
       window.location.reload();

@@ -2,17 +2,15 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Header.scss";
 import AuthorizationButton from "../AuthorizationButton/AuthorizationButton";
-import { useAuth0 } from "@auth0/auth0-react";
 import Emoji from "../Emoji/Emoji";
 import { FoodEmoji } from "../../enums/Emojis";
-import { splitUserSub } from "../../helpers/stringHelpers";
+import { userStore } from "../../stores/user";
 
 function Header() {
   const location = useLocation();
   const isOnProfile =
     location.pathname.split("/")[1] === "profile" ? true : false;
-  const { user } = useAuth0();
-
+  const userSub = userStore((state) => state.sub);
   return (
     <div className="header">
       {isOnProfile && (
@@ -30,10 +28,10 @@ function Header() {
       <Emoji type={"food"} name={FoodEmoji.BENTO} width={50} height={35} />
       <Link to={"/"}>Home</Link>
       <Link to={"/explore"}>Explore</Link>
-      {!user && <AuthorizationButton action={"signup"} />}
-      {!user && <AuthorizationButton action={"login"} />}
-      {user && <Link to={"/profile/" + splitUserSub(user?.sub)}>Profile</Link>}
-      {user && <AuthorizationButton action={"logout"} />}
+      {!userSub && <AuthorizationButton action={"signup"} />}
+      {!userSub && <AuthorizationButton action={"login"} />}
+      {userSub && <Link to={"/profile/" + userSub}>Profile</Link>}
+      {userSub && <AuthorizationButton action={"logout"} />}
     </div>
   );
 }

@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
 import "./RecipeForm.scss";
 import ErrorPopup from "../ErrorPopup/ErrorPopup";
-import { splitUserSub } from "../../helpers/stringHelpers";
 import { addRecipe, editRecipe } from "../../api/recipe";
 import { getAllUserRecipeBoxes } from "../../api/recipeBox";
+import { userStore } from "../../stores/user";
 
 function RecipeForm(props) {
-  const { user } = useAuth0();
-  const userSub = splitUserSub(user?.sub);
+  const userSub = userStore((state) => state.sub);
   const [name, setName] = useState(props?.name ?? "");
   const [description, setDescription] = useState(props?.description ?? "");
   const [link, setLink] = useState(props?.link ?? "");

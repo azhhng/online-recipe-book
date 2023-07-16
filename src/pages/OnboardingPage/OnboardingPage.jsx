@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import "./OnboardingPage.scss";
-import { useAuth0 } from "@auth0/auth0-react";
 import UserForm from "../../components/UserForm/UserForm";
 import PageTitleBar from "../../components/PageTitleBar/PageTitleBar";
 import { FoodEmoji } from "../../enums/Emojis";
-import { splitUserSub } from "../../helpers/stringHelpers";
 import { useLocation } from "react-router-dom";
 import ErrorPopup from "../../components/ErrorPopup/ErrorPopup";
+import { userStore } from "../../stores/user";
 
 function OnboardingPage() {
-  const { user } = useAuth0();
-  const userSub = splitUserSub(user?.sub);
+  const user = userStore((state) => state.wholeSub);
+  const userSub = userStore((state) => state.sub);
   const redirectedFromProfile = useLocation().state?.from === "profile";
 
   // error handling
@@ -35,7 +34,7 @@ function OnboardingPage() {
 
       <div className="onboarding-user-container">
         <UserForm
-          user={user?.sub}
+          user={user}
           userId={userSub}
           userInDatabase={false}
           sourcePage={"OnboardingPage"}
