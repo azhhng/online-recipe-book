@@ -9,14 +9,12 @@ import { FoodEmoji } from "../../enums/Emojis";
 import ErrorPopup from "../../components/ErrorPopup/ErrorPopup";
 import { splitPathSub } from "../../helpers/stringHelpers";
 import { removeUser, retrieveUser } from "../../api/user";
-import { authStore } from "../../stores/auth";
 import { userStore } from "../../stores/user";
 
 // TODO fix calling API with user?.sub and base it off the url instead
 // TODO fix alignment of editing profile form
 function ProfilePage() {
   const navigate = useNavigate();
-  const { getIdTokenClaims, getAccessTokenSilently } = useAuth0();
   const userSub = userStore((state) => state.sub);
   const user = userStore((state) => state.wholeSub);
   const currentProfileSub = splitPathSub(useLocation().pathname);
@@ -27,16 +25,6 @@ function ProfilePage() {
   // error handling
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-
-  useEffect(() => {
-    const getToken = async () => {
-      const accessToken = await getAccessTokenSilently();
-      authStore.getState().setAccessToken(accessToken);
-    };
-    if (userSub) {
-      getToken();
-    }
-  }, [getIdTokenClaims, getAccessTokenSilently, userSub]);
 
   const deleteUser = async () => {
     try {

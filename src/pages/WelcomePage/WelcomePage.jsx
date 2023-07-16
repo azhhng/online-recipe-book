@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./WelcomePage.scss";
 import { useAuth0 } from "@auth0/auth0-react";
 import { userStore } from "../../stores/user";
+import { authStore } from "../../stores/auth";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Emoji from "../../components/Emoji/Emoji";
 import { FoodEmoji } from "../../enums/Emojis";
@@ -14,19 +15,25 @@ import { useNavigate } from "react-router-dom";
 
 function WelcomePage() {
   const navigate = useNavigate();
-  const { user } = useAuth0();
+  const { user, getIdTokenClaims, getAccessTokenSilently } = useAuth0();
   const [recipeBoxes, setRecipeBoxes] = useState([]);
   // error handling
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
+    const getToken = async () => {
+      const accessToken = await getAccessTokenSilently();
+      authStore.getState().setAccessToken(accessToken);
+    };
+
     if (user) {
       const userSub = splitUserSub(user?.sub);
       userStore.getState().setSub(userSub);
       userStore.getState().setWholeSub(user?.sub);
+      getToken();
     }
-  }, [user]);
+  }, [user, getIdTokenClaims, getAccessTokenSilently]);
 
   useEffect(() => {
     const getRecipeBoxes = async () => {
