@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./WelcomePage.scss";
+import { useAuth0 } from "@auth0/auth0-react";
+import { userStore } from "../../stores/user";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Emoji from "../../components/Emoji/Emoji";
 import { FoodEmoji } from "../../enums/Emojis";
@@ -7,14 +9,24 @@ import { getAllUserRecipeBoxes } from "../../api/recipeBox";
 import ErrorPopup from "../../components/ErrorPopup/ErrorPopup";
 import EmojiBubble from "../../components/EmojiBubble/EmojiBubble";
 import { adjustBrightness } from "../../helpers/colorHelpers";
+import { splitUserSub } from "../../helpers/stringHelpers";
 import { useNavigate } from "react-router-dom";
 
 function WelcomePage() {
   const navigate = useNavigate();
+  const { user } = useAuth0();
   const [recipeBoxes, setRecipeBoxes] = useState([]);
   // error handling
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    if (user) {
+      const userSub = splitUserSub(user?.sub);
+      userStore.getState().setSub(userSub);
+      userStore.getState().setWholeSub(user?.sub);
+    }
+  }, [user]);
 
   useEffect(() => {
     const getRecipeBoxes = async () => {
