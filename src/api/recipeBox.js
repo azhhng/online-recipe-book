@@ -4,7 +4,6 @@ export const removeRecipeBox = async (recipeBoxId) => {
   const response = await axios.delete(
     `${process.env.REACT_APP_API_ADDRESS}/recipe-box/${recipeBoxId}`
   );
-  console.log(response);
   console.log("Deleting a recipe box...");
   return response;
 };
@@ -13,7 +12,6 @@ export const retrieveRecipeBox = async (recipeBoxId) => {
   const response = await axios.get(
     `${process.env.REACT_APP_API_ADDRESS}/recipe-box/${recipeBoxId}`
   );
-  console.log(response);
   console.log("Getting a recipe box...");
   return response;
 };
@@ -23,7 +21,6 @@ export const addRecipeBox = async (userSub, boxBody) => {
     `${process.env.REACT_APP_API_ADDRESS}/user/${userSub}/recipe-box`,
     boxBody
   );
-  console.log(response);
   console.log("Creating a recipe box...");
   return response;
 };
@@ -33,7 +30,6 @@ export const editRecipeBox = async (recipeBoxId, boxBody) => {
     `${process.env.REACT_APP_API_ADDRESS}/recipe-box/${recipeBoxId}`,
     boxBody
   );
-  console.log(response);
   console.log("Updating a recipe box...");
   return response;
 };

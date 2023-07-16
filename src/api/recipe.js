@@ -4,7 +4,6 @@ export const removeRecipe = async (recipeId) => {
   const response = await axios.delete(
     `${process.env.REACT_APP_API_ADDRESS}/recipe/${recipeId}`
   );
-  console.log(response);
   console.log("Deleting a recipe...");
   return response;
 };
@@ -14,7 +13,6 @@ export const addRecipe = async (userSub, boxBody) => {
     `${process.env.REACT_APP_API_ADDRESS}/user/${userSub}/recipe`,
     boxBody
   );
-  console.log(response);
   console.log("Creating a recipe...");
   return response;
 };
@@ -24,7 +22,6 @@ export const editRecipe = async (recipeId, boxBody) => {
     `${process.env.REACT_APP_API_ADDRESS}/recipe/${recipeId}`,
     boxBody
   );
-  console.log(response);
   console.log("Updating a recipe...");
   return response;
 };
