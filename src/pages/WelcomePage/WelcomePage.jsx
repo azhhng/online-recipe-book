@@ -26,7 +26,6 @@ function WelcomePage() {
       const accessToken = await getAccessTokenSilently();
       authStore.getState().setAccessToken(accessToken);
     };
-
     if (user) {
       const userSub = splitUserSub(user?.sub);
       userStore.getState().setSub(userSub);

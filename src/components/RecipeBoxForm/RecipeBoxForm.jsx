@@ -9,7 +9,6 @@ import { userStore } from "../../stores/user";
 
 function RecipeBoxForm(props) {
   const userSub = userStore((state) => state.sub);
-  console.log("User Sub: " + userSub);
   const [name, setName] = useState(props.box?.name ?? "");
   const [description, setDescription] = useState(props.box?.description ?? "");
   const [color, setColor] = useState(props.box?.color ?? "#8fafe3");
@@ -23,8 +22,6 @@ function RecipeBoxForm(props) {
 
   const createRecipeBox = async () => {
     try {
-      console.log("hello");
-      console.log(userSub);
       await addRecipeBox(userSub, { name, description, emoji, color });
       props.setCreatingRecipeBox(false);
       window.location.reload();

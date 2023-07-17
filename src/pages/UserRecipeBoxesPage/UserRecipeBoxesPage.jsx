@@ -11,7 +11,6 @@ import { userStore } from "../../stores/user";
 
 function UserRecipeBoxesPage() {
   const userSub = userStore((state) => state.sub);
-  console.log("User sub: " + userSub);
   const [recipeBoxes, setRecipeBoxes] = useState([]);
   const [recipesPerBox, setRecipesPerBox] = useState({});
   const [creatingRecipeBox, setCreatingRecipeBox] = useState(false);
