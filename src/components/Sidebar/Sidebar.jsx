@@ -78,7 +78,7 @@ function Sidebar() {
           emojiSize={28}
         />
       </div>
-      <h2>Your collection of online recipes... The modern recipe box!</h2>
+      <h2>Your collection of online recipes... the modern recipe box!</h2>
     </div>
   );
 }
