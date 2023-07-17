@@ -12,6 +12,7 @@ import EmojiBubble from "../../components/EmojiBubble/EmojiBubble";
 import { adjustBrightness } from "../../helpers/colorHelpers";
 import { splitUserSub } from "../../helpers/stringHelpers";
 import { useNavigate } from "react-router-dom";
+import Footer from "../../components/Footer/Footer";
 
 function WelcomePage() {
   const navigate = useNavigate();
@@ -109,6 +110,7 @@ function WelcomePage() {
         <h1>Take a look at some recipe boxes for inspiration:</h1>
         <ul>{recipeBoxes}</ul>
       </div>
+      <Footer />
     </div>
   );
 }
