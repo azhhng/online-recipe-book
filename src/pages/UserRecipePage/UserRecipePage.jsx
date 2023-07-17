@@ -78,7 +78,7 @@ function UserRecipePage() {
     );
   }
   return (
-    <div className="recipe-page-container">
+    <div className="page-container">
       {showError && (
         <ErrorPopup message={errorMessage} setShowError={setShowError} />
       )}

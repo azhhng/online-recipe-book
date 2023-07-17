@@ -58,7 +58,7 @@ function UserRecipeBoxesPage() {
   }, [userSub]);
 
   return (
-    <div className="profile-page-container">
+    <div className="page-container">
       {showError && (
         <ErrorPopup message={errorMessage} setShowError={setShowError} />
       )}
