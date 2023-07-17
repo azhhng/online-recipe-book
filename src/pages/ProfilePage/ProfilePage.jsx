@@ -74,16 +74,16 @@ function ProfilePage() {
         <button id="action-button" onClick={() => setIsUserFormOpen(true)}>
           Edit settings
         </button>
+        {isUserFormOpen && (
+          <UserForm
+            user={appUser}
+            userId={userSub}
+            userInDatabase={userInDatabase}
+            setIsUserFormOpen={setIsUserFormOpen}
+            sourcePage={"ProfilePage"}
+          />
+        )}
       </div>
-      {isUserFormOpen && (
-        <UserForm
-          user={appUser}
-          userId={userSub}
-          userInDatabase={userInDatabase}
-          setIsUserFormOpen={setIsUserFormOpen}
-          sourcePage={"ProfilePage"}
-        />
-      )}
     </div>
   );
 }
