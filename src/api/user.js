@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getTokenHeader } from "./tokenHeader";
 
 export const addUser = async (userId, userBody) => {
   const response = await axios.post(
@@ -10,17 +11,21 @@ export const addUser = async (userId, userBody) => {
 };
 
 export const editUser = async (userId, userBody) => {
+  const header = await getTokenHeader();
   const response = await axios.put(
     `${process.env.REACT_APP_API_ADDRESS}/user/${userId}`,
-    userBody
+    userBody,
+    header
   );
   console.log("Updating user...");
   return response;
 };
 
 export const removeUser = async (userId) => {
+  const header = await getTokenHeader();
   const response = await axios.delete(
-    `${process.env.REACT_APP_API_ADDRESS}/user/${userId}`
+    `${process.env.REACT_APP_API_ADDRESS}/user/${userId}`,
+    header
   );
   console.log("Deleting user...");
   return response;
