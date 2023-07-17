@@ -75,3 +75,39 @@ a {
   opacity: 1;
   /* Firefox */
 }
+
+/* ===== Text Highlight CSS ===== */
+
+::-moz-selection {
+  /* Firefox */
+  background: #f7cbe5;
+}
+
+::selection {
+  background: #f7cbe5;
+}
+
+/* ===== Scrollbar CSS ===== */
+
+/* Firefox */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(114, 134, 207);
+}
+
+/* Chrome, Edge, and Safari */
+
+*::-webkit-scrollbar {
+  width: 11px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff00;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(114, 134, 207);
+  border-radius: 11px;
+  border: 0;
+}
