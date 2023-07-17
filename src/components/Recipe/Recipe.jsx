@@ -69,7 +69,7 @@ function Recipe(props) {
       )}
       <div className="text-container">
         <h3>{props.name}</h3>
-        <h4 id="recipe-description">{props.description}</h4>
+        <h4>{props.description}</h4>
       </div>
       <div className="recipe-box-tag">
         <Emoji

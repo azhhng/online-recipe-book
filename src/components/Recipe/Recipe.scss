@@ -25,9 +25,15 @@
   align-items: center;
 }
 
-.recipe-container > .text-container > #recipe-description {
-  border: 0px;
-  padding: 0px;
+.recipe-container > .text-container > h3 {
+  color: $vibrant-blue;
+  border: 2px solid $dark-blue;
+  padding: 10px 15px;
+  border-radius: 15px;
+}
+
+.recipe-container > .text-container > h4 {
+  margin: 0px;
 }
 
 .recipe-container > .recipe-box-tag > img {

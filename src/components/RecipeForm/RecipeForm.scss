@@ -2,8 +2,7 @@
 
 /* ===== RecipeForm SCSS ===== */
 
-.recipe-form-container,
-.edit-recipe-form-container {
+.recipe-form-container {
   float: left;
   height: 400px;
   width: 260px;
@@ -14,9 +13,7 @@
   box-shadow: 2px 2px 0px 2px $deepest-yellow;
   word-wrap: break-word;
   background-color: $light-yellow;
-  position: static;
-  z-index: 2;
-  padding: 30px 20px;
+  padding: 10px 0px 30px 20px;
 }
 
 // name and link
