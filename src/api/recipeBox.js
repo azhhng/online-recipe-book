@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getTokenHeader } from "./tokenHeader";
+import { getTokenHeader } from "../helpers/authHelpers";
 const header = await getTokenHeader();
 
 export const removeRecipeBox = async (recipeBoxId) => {
