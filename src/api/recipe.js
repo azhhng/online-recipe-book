@@ -1,8 +1,11 @@
 import axios from "axios";
+import { getTokenHeader } from "./tokenHeader";
+const header = await getTokenHeader();
 
 export const removeRecipe = async (recipeId) => {
   const response = await axios.delete(
-    `${process.env.REACT_APP_API_ADDRESS}/recipe/${recipeId}`
+    `${process.env.REACT_APP_API_ADDRESS}/recipe/${recipeId}`,
+    header
   );
   console.log("Deleting a recipe...");
   return response;
@@ -11,7 +14,8 @@ export const removeRecipe = async (recipeId) => {
 export const addRecipe = async (userSub, boxBody) => {
   const response = await axios.post(
     `${process.env.REACT_APP_API_ADDRESS}/user/${userSub}/recipe`,
-    boxBody
+    boxBody,
+    header
   );
   console.log("Creating a recipe...");
   return response;
@@ -20,7 +24,8 @@ export const addRecipe = async (userSub, boxBody) => {
 export const editRecipe = async (recipeId, boxBody) => {
   const response = await axios.put(
     `${process.env.REACT_APP_API_ADDRESS}/recipe/${recipeId}`,
-    boxBody
+    boxBody,
+    header
   );
   console.log("Updating a recipe...");
   return response;
