@@ -13,8 +13,10 @@
   border: 2px solid $dark-blue;
   box-shadow: 2px 2px 0px 2px $deepest-yellow;
   background-color: $light-yellow;
-  position: static;
-  z-index: 2;
+}
+
+.recipe-box-form {
+  position: relative;
 }
 
 // name

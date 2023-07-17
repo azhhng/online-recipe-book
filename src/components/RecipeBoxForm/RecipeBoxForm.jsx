@@ -48,7 +48,14 @@ function RecipeBoxForm(props) {
   };
 
   return (
-    <div className="recipe-box-form-container">
+    <div
+      className="recipe-box-form-container"
+      style={
+        props.action === "edit"
+          ? { position: "relative", bottom: "100px", right: "10px" }
+          : {}
+      }
+    >
       {showError && (
         <ErrorPopup message={errorMessage} setShowError={setShowError} />
       )}
