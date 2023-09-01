@@ -37,3 +37,11 @@ export const retrieveUser = async (userId) => {
   console.log("Getting user...");
   return response;
 };
+
+export const retrieveVerifiedUsersRecipeBoxes = async () => {
+  const response = await axios.get(
+    `${process.env.REACT_APP_API_ADDRESS}/verified-user/recipe-box`
+  );
+  console.log("Getting verified users' boxes...");
+  return response;
+};
