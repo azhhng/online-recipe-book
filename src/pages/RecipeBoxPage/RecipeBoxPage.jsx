@@ -61,11 +61,13 @@ function RecipeBoxPage() {
       {showError && (
         <ErrorPopup message={errorMessage} setShowError={setShowError} />
       )}
-      <div className="recipe-action-bar">
-        <button id="action-button" onClick={() => setAddingRecipeToBox(true)}>
-          Add recipe
-        </button>
-      </div>
+      {sameUser && (
+        <div className="recipe-action-bar">
+          <button id="action-button" onClick={() => setAddingRecipeToBox(true)}>
+            Add recipe
+          </button>
+        </div>
+      )}
       <div className="recipe-group-container">
         {Object.keys(recipeBox).length !== 0 &&
           recipes.map((recipe) => (
